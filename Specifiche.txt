@@ -1,0 +1,9 @@
+La formula CONTA.VALORI() di Excel conta quante volte un campo è flaggato.
+
+POSIZIONE = punti + (contaValori_colonnaChiamante)*0,1 + (contaValori_colonnaSocio)*0.01
+
+Punti Classifica = (Punti premio del proprio rango) + 0,1*(TotalePunti)
+
+Punti Mano ==> _ Se i punti chiamati sono <= 69, allora i punti mano sono 2 (+4 in caso di cappotto)
+               _ Se 70 <= punti chiamati <= 79, allora i punti mano sono 4 (+4 in caso di cappotto)
+               _ Se i punti chiamati sono >= 80, allora i punti mano sono 6 (+4 in caso di cappotto)

@@ -1,0 +1,39 @@
+- tabella giocatori
+	acronimo
+	cognome
+	nome
+	disattivato
+	dataDisattivazione
+
+- tabella chiama2
+	acronimoGiocatore - campo chiave
+	dataPartita - campo chiave
+	mano - campo chiave
+	chiamante --> s/n
+	socio --> s/n
+	morto --> s/n
+	punti
+
+- tabella posizioni
+	dataPartita - campo chiave
+	acronimoGiocatore - campo chiave
+	posizione
+	puntiClassifica
+
+- tabella partita
+	dataPartita - campo chiave
+	mano - campo chiave
+	carta
+	seme
+	puntiMano
+
+- tabella puntiPremio
+	numRecord - campo chiave
+	dataPartita
+	posizioneClassificato
+	puntiPremio
+
+- tabella totPuntiPartita
+	dataPartita - campo chiave
+	acronimoGiocatore - campo chiave
+	totPunti
