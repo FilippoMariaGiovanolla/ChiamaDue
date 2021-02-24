@@ -27,8 +27,8 @@ create table chiama2
 	acronimoGiocatore VARCHAR(6),
 	dataPartita VARCHAR(10),
 	mano INT,
-	chiamante CHAR, /* Il giocatore Ë chiamante nella mano che si sta considerando? [S/N] */
-	socio CHAR, /* Il giocatore Ë socio nella mano che si sta considerando? [S/N] */
+	chiamante CHAR, /* Il giocatore √® chiamante nella mano che si sta considerando? [S/N] */
+	socio CHAR, /* Il giocatore √® socio nella mano che si sta considerando? [S/N] */
 	punti INT,
 	PRIMARY KEY (acronimoGiocatore, dataPartita, mano),
 	FOREIGN KEY (acronimoGiocatore) REFERENCES giocatori(acronimo),
@@ -48,12 +48,12 @@ create table posizioni
 
 /*create table puntiPremio
 (
-	numRecord INT, /* Ë un campo che conterr‡ il numero progressivo di ogni record della tabella: mi serve unicamente per defnire un campo chiave
+	numRecord INT, /* √® un campo che conterr√† il numero progressivo di ogni record della tabella: mi serve unicamente per defnire un campo chiave
 	dataPartita VARCHAR(10),
 	posizioneClassificato INT, /* posizione in classifica per una data partita in base alla quale attribuire i punti premio definiti nel campo seguente 
 	puntiPremio INT,
 	PRIMARY KEY(numRecord)
-); --> questa tabella di fatto non serve, quindi la sua creazione la commento, cosÏ non perdo lo storico del fatto che era stata originariamente creata; cancellata con un comando: 'DROP TABLE puntiPremio' */
+); --> questa tabella di fatto non serve, quindi la sua creazione la commento, cos√¨ non perdo lo storico del fatto che era stata originariamente creata; cancellata con un comando: 'DROP TABLE puntiPremio' */
 
 create table totPuntiPartita
 (
