@@ -5,14 +5,14 @@
 	<body>
 		<?php
 			error_reporting (E_ALL ^ E_NOTICE); // questo comando permette di eliminare dall'output a video le NOTICE indesiderate
-			$numero_giocatori=$_POST["numero_giocatori"]; //echo("Il numero di giocatori arrivato a questa pagina è ".$numero_giocatori);
+			$numero_giocatori=$_POST["numero_giocatori"]; //echo("Il numero di giocatori arrivato a questa pagina &egrave; ".$numero_giocatori);
 			for($i=0; $i<$numero_giocatori; $i++)
 				$giocatore[]=$_POST["giocatore$i"];
 			$mani_libere=$_POST["mani_libere"];
 			if($mani_libere=="yes")
 				$numero_mani=14;
 			else
-				$numero_mani=$_POST["mani"]; //echo("Il numero di mani arrivato a questa pagina è ".$numero_mani);
+				$numero_mani=$_POST["mani"]; //echo("Il numero di mani arrivato a questa pagina &egrave; ".$numero_mani);
 			
 			//inizio fase di costruzione della data odierna
 			$oggi=getdate();

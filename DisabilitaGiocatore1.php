@@ -57,10 +57,10 @@
 					      SET dataDisattivazione='$dataOdierna', disattivato='S' 
 					      WHERE acronimo='$acronimo_disabilitante'";
 				$risultato1=mysql_query($query1)
-					or die("Impossibile disabilitare ".$acronimo_disabilitante."; lo script si è interrotto. <br>
-						  Se si era scelto di riabilitare un altro giocatore, anche questa operazione non è stata effettuata");
+					or die("Impossibile disabilitare ".$acronimo_disabilitante."; lo script si &egrave; interrotto. <br>
+						  Se si era scelto di riabilitare un altro giocatore, anche questa operazione non &egrave; stata effettuata");
 				if ($risultato1)
-					echo("<h3>".$acronimo_disabilitante." è stato correttamente disabilitato.</h3><br>");
+					echo("<h3>".$acronimo_disabilitante." &egrave; stato correttamente disabilitato.</h3><br>");
 			  }
 			// fine fase di disattivazione
 			
@@ -72,14 +72,14 @@
 					      SET dataRiattivazione='$dataOdierna', disattivato='N' 
 					      WHERE acronimo='$acronimo_riabilitante'";
 				$risultato2=mysql_query($query2)
-					or die("Impossibile riabilitare ".$acronimo_riabilitante."; lo script si è interrotto.");
+					or die("Impossibile riabilitare ".$acronimo_riabilitante."; lo script si &egrave; interrotto.");
 				if ($risultato2)
-					echo("<h3>".$acronimo_riabilitante." è stato correttamente riabilitato.</h3><br>");
+					echo("<h3>".$acronimo_riabilitante." &egrave; stato correttamente riabilitato.</h3><br>");
 			  }
 			// fine fase di riattivazione
 			
 			if($nessuno1==0 and $nessuno2==0)
-				echo("<h3>Non è stato selezionato nessun giocatore, nè da abilitare nè da disabilitare</h3>");
+				echo("<h3>Non &egrave; stato selezionato nessun giocatore, n&eacute; da abilitare n&eacute; da disabilitare</h3>");
 			mysql_close($conn);
 		?>
 		<br>

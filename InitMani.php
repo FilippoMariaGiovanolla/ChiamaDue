@@ -22,7 +22,7 @@
 			while ($riga=mysql_fetch_row($risultato))
 			{
 				$acronimo=$_POST["$riga[0]"];
-				echo("<!-- Il valore di Sacronimo è ".$acronimo."-->");
+				echo("<!-- Il valore di Sacronimo &egrave; ".$acronimo."-->");
 				if(strlen($acronimo)==6)
 				{
 					//echo("Giocatore ".$quanti.": ".$acronimo."<br>");
@@ -33,7 +33,7 @@
 			}
 			if($quanti<5)
 			{
-				echo("<b>Sono stati selezionati ".$quanti." giocatori; è necessario selezionarne almeno 5</b>");
+				echo("<b>Sono stati selezionati ".$quanti." giocatori; &egrave; necessario selezionarne almeno 5</b>");
 				echo("</form>"); // tag di chiusura del form aperto dopo la definizione della variabile $quanti
 			}
 			else

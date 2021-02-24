@@ -15,7 +15,7 @@
 				      FROM giocatori
 				      limit 1";
 			$risultato1=mysql_query($query1)
-				or die("Non è stato possibile stabilire se la tabella giocatori è popolata");
+				or die("Non &egrave; stato possibile stabilire se la tabella giocatori &egrave; popolata");
 			$righe1=mysql_num_rows($risultato1);
 			if ($righe1>0)
 			  {

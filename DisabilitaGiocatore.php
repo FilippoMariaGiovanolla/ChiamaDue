@@ -14,7 +14,7 @@
 				    FROM giocatori
 				    limit 1";
 			$risultato=mysql_query($query)
-				or die("Non è stato possibile stabilire se la tabella giocatori è popolata");
+				or die("Non &egrave; stato possibile stabilire se la tabella giocatori &egrave; popolata");
 			$righe=mysql_num_rows($risultato);
 			if ($righe>0)
 			{
@@ -55,7 +55,7 @@
 			  else
 			   {
 				$nessuno='nessuno';
-				echo("<h3>Tutti i giocatori sono disabilitati, non è possibile disabilitarne altri</h3>");
+				echo("<h3>Tutti i giocatori sono disabilitati, non &egrave; possibile disabilitarne altri</h3>");
 				echo"<INPUT TYPE='hidden' NAME='acronimo_disabilitante' VALUE='$nessuno'>";
 			   }
 			  echo("</fieldset>"); // fine sezione di disattivazione
@@ -95,7 +95,7 @@
 			  else
 			    {
 				$nessuno2='nessuno';
-				echo("<h3>Tutti i giocatori sono abilitati, non è possibile abilitarne altri</h3>");
+				echo("<h3>Tutti i giocatori sono abilitati, non &egrave; possibile abilitarne altri</h3>");
 				echo"<INPUT TYPE='hidden' NAME='acronimo_riabilitante' VALUE='$nessuno2'>";
 			    }
 			  echo("</fieldset>");//fine sezione di attivazione

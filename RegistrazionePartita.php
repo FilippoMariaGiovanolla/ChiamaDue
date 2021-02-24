@@ -11,9 +11,9 @@
 			or die("Impossibile stabilire una connessione con il server");
 		$db=mysql_select_db('chiama2')
 			or die("Impossibile selezionare il database di chiamata al due");
-		$dataPartita=$_POST["data_partita"]; //echo("La data della partita è ".$dataPartita."<br>"); //CONTROLLATO: PASSAGGIO OK
-		$numeroGiocatori=$_POST["numero_giocatori"]; //echo("Il numero dei giocatori è ".$numeroGiocatori."<br>"); //CONTROLLATO: PASSAGGIO OK
-		$numeroMani=$_POST["numero_mani"]; //echo("Il numero delle mani è ".$numeroMani."<br>"); //CONTROLLATO: PASSAGGIO OK
+		$dataPartita=$_POST["data_partita"]; //echo("La data della partita &egrave; ".$dataPartita."<br>"); //CONTROLLATO: PASSAGGIO OK
+		$numeroGiocatori=$_POST["numero_giocatori"]; //echo("Il numero dei giocatori &egrave; ".$numeroGiocatori."<br>"); //CONTROLLATO: PASSAGGIO OK
+		$numeroMani=$_POST["numero_mani"]; //echo("Il numero delle mani &egrave; ".$numeroMani."<br>"); //CONTROLLATO: PASSAGGIO OK
 		for($i=0;$i<$numeroGiocatori;$i++)
 		{
 			$giocatori[]=$_POST["giocatore$i"];
@@ -38,8 +38,8 @@
 				//if(strlen($socio[$i][$j])==6)
 					//echo("Socio mano ".$num_man.": ".$socio[$i][$j]."<br>"); // PASSAGGIO OK
 					
-				// determino se il chiamante si è chiamato in mano	
-				if((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])==6)) // se il chiamante si è chiamato in mano la variabile vale 1, se non si è chiamato in mano vale 0
+				// determino se il chiamante si Ã¨ chiamato in mano	
+				if((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])==6)) // se il chiamante si Ã¨ chiamato in mano la variabile vale 1, se non si Ã¨ chiamato in mano vale 0
 					$chiamatoInMano[$i]=1;
 				else
 					$chiamatoInMano[$i]=0;
@@ -175,7 +175,7 @@
 	</table> <!--Corrispondente a riga 103 del file CompilaPartita.php-->
 	<?php
 		echo("<table border='1'>");
-			//inizializzo a zero i contatori che conteranno quante volte un giocatore è stato chiamante o socio, i punti totali di ogni giocatore e 
+			//inizializzo a zero i contatori che conteranno quante volte un giocatore Ã¨ stato chiamante o socio, i punti totali di ogni giocatore e 
 			//quante volte ogni giocatore ha fatto il ruolo del morto
 			for($j=0; $j<$numeroGiocatori; $j++)
 			   {
@@ -267,7 +267,7 @@
 					if((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])==6) and ($vittoriaChiamante[$i]=="yes"))
 					   {
 						$puntiChiamante=$puntiMano[$i]*2;
-						$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
+						$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchÃ¨ se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
 						if($puntiChiamante<0)
 							echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiChiamante."</center></b></font></td>");
 						else
@@ -282,7 +282,7 @@
 					elseif((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])==6) and ($vittoriaChiamante[$i]!="yes"))
 					   {
 						$puntiChiamante=($puntiMano[$i]*(-2));
-						$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
+						$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchÃ¨ se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
 						if($puntiChiamante<0)
 							echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiChiamante."</center></b></font></td>");
 						else
@@ -297,7 +297,7 @@
 					elseif((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])!=6) and ($vittoriaChiamante[$i]=="yes"))
 					   {
 						$puntiChiamante=$puntiMano[$i];
-						$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
+						$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchÃ¨ se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
 						if($puntiChiamante<0)
 							echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiChiamante."</center></b></font></td>");
 						else
@@ -312,7 +312,7 @@
 					elseif((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])!=6) and ($vittoriaChiamante[$i]!="yes"))
 					   {
 						$puntiChiamante=$puntiMano[$i]*(-1);
-						$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
+						$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchÃ¨Ã¨ se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
 						if($puntiChiamante<0)
 							echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiChiamante."</center></b></font></td>");
 						else
@@ -327,7 +327,7 @@
 					elseif((strlen($socio[$i][$j])==6) and (strlen($chiamante[$i][$j])!=6) and ($vittoriaChiamante[$i]=="yes"))
 					   {
 						$puntiSocio=$puntiMano[$i]/2;
-						$chiEStatoChiamato=$socio[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $socio[$i][$j] l'update non funziona
+						$chiEStatoChiamato=$socio[$i][$j]; // necessito di inserire questa variabile perchÃ¨ se nell'update qui sotto metto la variabile $socio[$i][$j] l'update non funziona
 						if($puntiSocio<0)
 							echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiSocio."</center></b></font></td>");
 						else
@@ -342,7 +342,7 @@
 					elseif((strlen($socio[$i][$j])==6) and (strlen($chiamante[$i][$j])!=6) and ($vittoriaChiamante[$i]!="yes"))
 					   {
 						$puntiSocio=($puntiMano[$i]/2)*(-1);
-						$chiEStatoChiamato=$socio[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $socio[$i][$j] l'update non funziona
+						$chiEStatoChiamato=$socio[$i][$j]; // necessito di inserire questa variabile perchÃ¨ se nell'update qui sotto metto la variabile $socio[$i][$j] l'update non funziona
 						if($puntiSocio<0)
 							echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiSocio."</center></b></font></td>");
 						else
@@ -375,7 +375,7 @@
 											SET punti='$puntiGiocatore' 
 											WHERE chiamante='N' AND socio='N' AND dataPartita='$dataPartita' AND mano='$mano' and punti=0"; //WHERE acronimoGiocatore<>'$chiHaChiamato' AND acronimoGiocatore<>'$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano' AND $condizione=0";
 							mysql_query($update_chiama2_punti)
-								or die("1 - Impossibile inserire nel db i punti dei giocatori non chiamenti nè soci");
+								or die("1 - Impossibile inserire nel db i punti dei giocatori non chiamenti n&eacute; soci");
 							//}
 							$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiGiocatore;
 						}
@@ -406,7 +406,7 @@
 											SET punti='$puntiGiocatore' 
 											WHERE chiamante='N' AND socio='N' AND dataPartita='$dataPartita' AND mano='$mano' and punti=0"; //WHERE acronimoGiocatore<>'$chiHaChiamato' AND acronimoGiocatore<>'$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano' AND $condizione=0";
 							mysql_query($update_chiama2_punti)
-								or die("2 - Impossibile inserire nel db i punti dei giocatori non chiamenti nè soci");
+								or die("2 - Impossibile inserire nel db i punti dei giocatori non chiamenti n&eacute; soci");
 							//}
 							$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiGiocatore;
 						}
@@ -441,7 +441,7 @@
 											SET punti='$puntiGiocatore' 
 											WHERE chiamante='N' AND socio='N' AND dataPartita='$dataPartita' AND mano='$mano' and punti=0";//WHERE acronimoGiocatore<>'$chiHaChiamato' AND acronimoGiocatore<>'$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano' AND $condizione=0";
 							mysql_query($update_chiama2_punti)
-								or die("3 - Impossibile inserire nel db i punti dei giocatori non chiamenti nè soci");
+								or die("3 - Impossibile inserire nel db i punti dei giocatori non chiamenti n&eacute; soci");
 							//}
 							$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiGiocatore;
 						}
@@ -472,7 +472,7 @@
 											SET punti='$puntiGiocatore' 
 											WHERE chiamante='N' AND socio='N' AND dataPartita='$dataPartita' AND mano='$mano' and punti=0";//WHERE acronimoGiocatore<>'$chiHaChiamato' AND acronimoGiocatore<>'$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano' AND $condizione=0";
 							mysql_query($update_chiama2_punti)
-								or die("4 - Impossibile inserire nel db i punti dei giocatori non chiamenti nè soci");
+								or die("4 - Impossibile inserire nel db i punti dei giocatori non chiamenti n&eacute; soci");
 							//}
 							$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiGiocatore;
 						}
@@ -618,7 +618,7 @@
 							if($j==0)
 							{
 								$punteggioTrovato=$punteggio[$j];
-								$indicePunteggioTrovato=$indice+1; // metto +1 perchè la variabile $indice parte da zero
+								$indicePunteggioTrovato=$indice+1; // metto +1 perchÃ¨ la variabile $indice parte da zero
 								$indiceAVideo[$j]=$indicePunteggioTrovato;
 								$punteggioAVideo[$j]=$punteggioTrovato;
 							}
@@ -648,7 +648,7 @@
 				$punteggioRiferimento=null;
 				for($j=0;$j<$numeroGiocatori;$j++)
 				{
-					$posizione=$j+1; // è il valore che va a video
+					$posizione=$j+1; // Ã¨ il valore che va a video
 					$trovato=0;
 					$i=0;
 					do

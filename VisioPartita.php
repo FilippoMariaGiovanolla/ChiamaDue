@@ -16,7 +16,7 @@
 				or die("Impossibile estrarre il numero di giocatori della partita selezionata");
 			while($num_giocatori=mysql_fetch_row($risultato_num_giocatori))
 			{
-				//echo("Il numero di giocatori della partita selezionata è ".$num_giocatori[0]."<br>");
+				//echo("Il numero di giocatori della partita selezionata &egrave; ".$num_giocatori[0]."<br>");
 				$numeroGiocatori=$num_giocatori[0];
 			}
 			echo("<h2><center><b>Partita del ".$partita."</b></center></h2>"); // PASSAGGIO OK
@@ -202,12 +202,12 @@
 							or die("Impossibile estrarre i punti dei soci".mysql_error());
 						while($punti_socio_estratti=mysql_fetch_row($risultato_query_vittoria_socio))
 							$puntiSocio=$punti_socio_estratti[0];
-					  //estraggo i punti dei giocatori non chiamanti né soci nella mano di volta in volta considerata
+					  //estraggo i punti dei giocatori non chiamanti nÃ© soci nella mano di volta in volta considerata
 						$query_punti_giocatore="SELECT DISTINCT punti 
 										  FROM chiama2 
 										  WHERE mano=$mano and datapartita='$partita' and chiamante='N' and socio='N' and morto='N'";
 						$risultato_query_punti_giocatore=mysql_query($query_punti_giocatore)
-							or die("1 - Impossibile estrarre i punti dei giocatori non chiamanti nè soci".mysql_error());
+							or die("1 - Impossibile estrarre i punti dei giocatori non chiamanti n&eacute; soci".mysql_error());
 						while($punti_estratti=mysql_fetch_row($risultato_query_punti_giocatore))
 							$puntiGiocatore=$punti_estratti[0];
 					  //for($j=0; $j<$numeroGiocatori; $j++)

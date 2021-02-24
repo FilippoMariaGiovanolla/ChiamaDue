@@ -39,7 +39,7 @@
 				}
 				$j++;	
 			}
-			rsort($anno); // con questa funzione ordino in modo decrescente gli elementi dell'array $anno, così saranno pronti per essere mandati a video
+			rsort($anno); // con questa funzione ordino in modo decrescente gli elementi dell'array $anno, cosÃ¬ saranno pronti per essere mandati a video
 			/*for($i=0;$i<count($anno);$i++)
 			{
 				$posizione=$i+1;

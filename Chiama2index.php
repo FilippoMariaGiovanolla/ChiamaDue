@@ -52,7 +52,7 @@
 					//fine fase di costruzione della data odierna
 					$query="SELECT DISTINCT datapartita FROM totpuntipartita";
 					$risultato=mysql_query($query)
-						or die("impossibile estrarre le date delle partite già eseguite");
+						or die("impossibile estrarre le date delle partite gi&agrave; eseguite");
 					$trovato=0;
 					while(($dataEstratta=mysql_fetch_row($risultato)) and ($trovato==0))
 					{
@@ -63,7 +63,7 @@
 						echo("<td style='text-align: right;' width='406'><a href='InitGiocatori.php'><h3>Nuova partita</h3></a></td>");
 					else
 						echo("<td style='text-align: right;' width='406'><h3><u>Nuova partita</u></h3>
-						         funzione non disponibile: <br> partita già effettuata in data odierna</td>");
+						         funzione non disponibile: <br> partita gi&agrave; effettuata in data odierna</td>");
 				?>
 				<td style="text-align: center;" width="406"><a href="VisioStatistiche.php"><h3>Visualizza statistiche</h3></a></td>
 				<td width="400"><a href="GestioneGiocatori.html"><h3>Gestione giocatori</h3></a></td>

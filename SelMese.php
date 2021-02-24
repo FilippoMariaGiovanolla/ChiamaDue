@@ -14,7 +14,7 @@
 			$anno=$_POST["anno"];
 			if(strlen($anno)==4)
 			{
-			echo("<center><h1>L'anno selezionato è il ".$anno.".</h1></center>");
+			echo("<center><h1>L'anno selezionato &egrave; il ".$anno.".</h1></center>");
 			echo("<center><h2>Ora seleziona il mese</h2></center>");
 			$query="SELECT DISTINCT datapartita FROM partita";
 			$risultato=mysql_query($query)
@@ -162,7 +162,7 @@
 					echo("</tr>");
 				echo("</table>");
 				echo("<br><br>");
-				echo("<i><center>I mesi scritti in grigio sono quelli in cui, nell'anno selezionato, non è stata registrata nessuna partita</center></i>");
+				echo("<i><center>I mesi scritti in grigio sono quelli in cui, nell'anno selezionato, non &egrave; stata registrata nessuna partita</center></i>");
 				echo("</fieldset>");
 				echo("<input type='hidden' name='anno' value='$anno'>");
 				echo("<INPUT TYPE='SUBMIT' NAME='inserisci' VALUE='Avanti'>");
