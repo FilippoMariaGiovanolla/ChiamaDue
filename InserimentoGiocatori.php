@@ -18,11 +18,11 @@
 					echo("<table border='0'>");
 						echo("<tr>");
 							echo("<TD>Acronimo</TD>");
-							echo("<TD><INPUT TYPE='TEXT' NAME=$name_acronimo SIZE 6></TD>");
+							echo("<TD><INPUT TYPE='TEXT' NAME=$name_acronimo SIZE='6'></TD>");
 							echo("<TD>Cognome</TD>");
-							echo("<TD><INPUT TYPE='TEXT' NAME=$name_cognome SIZE 30></TD>");
+							echo("<TD><INPUT TYPE='TEXT' NAME=$name_cognome SIZE='30'></TD>");
 							echo("<TD>Nome</TD>");
-							echo("<TD><INPUT TYPE='TEXT' NAME=$name_nome SIZE 30></TD>");
+							echo("<TD><INPUT TYPE='TEXT' NAME=$name_nome SIZE='30'></TD>");
 						echo("</tr>");
 					echo("</table>");					
 					echo("</fieldset>");
