@@ -38,10 +38,10 @@
 			}
 			else
 			{
-				echo("<table border='0'>");
+				/*echo("<table border='0'>");
 					echo("<tr>");
 						echo("<td><b>Determina quante mani si potranno fare, al massimo, 
-							 in questa partita</b> &nbsp;&nbsp;&nbsp;&nbsp;</td>");
+							 in questa partita:</b> &nbsp;&nbsp;&nbsp;&nbsp;</td>");
 						echo("<td>");
 							echo("<select name='mani'>
 									<OPTION VALUE='1'>1
@@ -62,10 +62,10 @@
 								</select>");
 						echo("</td>");
 					echo("</tr>");
-				echo("</table>");
-				echo("<br>");
-				echo("Non so quante mani si potranno fare in questa partita ");
-				echo("<input type='checkbox' name='mani_libere' value='yes'>");
+				echo("</table>");*/
+				echo("<h3>Determina quante mani si potranno fare, al massimo, in questa partita:</b> <input type='number' name='mani' step=1></h3>");
+				//echo("<br>");
+				echo("<h3>Non so quante mani si potranno fare in questa partita <input type='checkbox' name='mani_libere' value='yes'></h3>");
 				echo("<input name='numero_giocatori' type='hidden' value='$quanti'>");
 				echo("<br><br>");
 				echo("<INPUT TYPE='SUBMIT' NAME='invio' VALUE='Avanti'>");

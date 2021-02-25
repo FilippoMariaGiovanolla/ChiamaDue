@@ -48,7 +48,7 @@
 			   echo("</form>");
 			}
 			else
-				echo("<H2><B>Non sono presenti sufficienti giocatori che possono giocare questa partita;<br>
+				echo("<H2><B>Non sono presenti sufficienti giocatori che possono giocare questa partita (attualmente il numero di giocatori validi &egrave; ".$numGiocatoriValidi.");<br>
 				                     accedere alla 
 						     <a href='GestioneGiocatori.html'>gestione giocatori</a> per inserirli o abilitarli al gioco</B></H2>");
 		?>

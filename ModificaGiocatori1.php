@@ -25,7 +25,7 @@
 				echo("<TABLE BORDER='0'>");
 					echo"<TR>";
 						echo"<TD>Acronimo</TD>";
-						echo"<TD><INPUT TYPE='TEXT' NAME='acronimo' SIZE 6 VALUE=$riga[0]></TD>";
+						echo"<TD><INPUT TYPE='TEXT' NAME='acronimo' SIZE='6' VALUE=$riga[0]></TD>";
 					echo"</TR>";
 					echo"<TR>";
 						echo"<TD>Cognome</TD>";
