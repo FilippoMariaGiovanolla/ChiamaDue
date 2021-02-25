@@ -36,6 +36,11 @@
 				echo("<b>Sono stati selezionati ".$quanti." giocatori; &egrave; necessario selezionarne almeno 5</b>");
 				echo("</form>"); // tag di chiusura del form aperto dopo la definizione della variabile $quanti
 			}
+			elseif($quanti>6)
+			{
+				echo("<b>Sono stati selezionati ".$quanti." giocatori; &egrave; necessario selezionarne al massimo 6</b>");
+				echo("</form>"); // tag di chiusura del form aperto dopo la definizione della variabile $quanti
+			}
 			else
 			{
 				/*echo("<table border='0'>");
