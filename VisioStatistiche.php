@@ -13,7 +13,9 @@
 			$query="SELECT count(*) FROM partita";
 			$risultato=mysql_query($query)
 				or die ("Impossibile stabilire se sono state memorizzate partite all'interno del database");
-			if($risultato==0)
+			while($riga=mysql_fetch_row($risultato))
+				$NumPartiteGiocate=$riga[0];
+			if($NumPartiteGiocate==0)
 				echo("<h3>Non sono state ancora gestite partite con questo programma: impossibile visualizzare statistiche</h3>");
 			else
 			{

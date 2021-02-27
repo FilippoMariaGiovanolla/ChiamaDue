@@ -3,7 +3,7 @@
 		<title>Chiama 2</title>
 	</head>
 	<body>
-		<center><b><h2>Chiama il 2</h2></b></center>
+		<center><b><h1>Chiama il 2</h1></b></center>
 		<br>
 		<table align="center" border="0" width="80%">
 			<tr>
@@ -60,13 +60,13 @@
 							$trovato=1;
 					}
 					if($trovato==0)
-						echo("<td style='text-align: center;' width='33%'><a href='InitGiocatori.php'><h3>Nuova partita</h3></a></td>");
+						echo("<td style='text-align: center;' width='33%'><a href='InitGiocatori.php'><h2>Nuova partita</h2></a></td>");
 					else
-						echo("<td style='text-align: center;' width='33%'><h3><u>Nuova partita</u></h3>
+						echo("<td style='text-align: center;' width='33%'><h2><u>Nuova partita</u></h2>
 						         funzione non disponibile: <br> partita gi&agrave; effettuata in data odierna</td>");
 				?>
-				<td style="text-align: center;" width="34%"><a href="VisioStatistiche.php"><h3>Visualizza statistiche</h3></a></td>
-				<td style="text-align: center;" width="33%"><a href="GestioneGiocatori.html"><h3>Gestione giocatori</h3></a></td>
+				<td style="text-align: center;" width="34%"><a href="VisioStatistiche.php"><h2>Visualizza statistiche</h2></a></td>
+				<td style="text-align: center;" width="33%"><a href="GestioneGiocatori.html"><h2>Gestione giocatori</h2></a></td>
 			</tr>
 		</table>
 		<?php
