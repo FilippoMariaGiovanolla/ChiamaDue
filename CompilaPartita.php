@@ -1,6 +1,11 @@
 <html>
 	<head>
 		<title>Partita</title>
+		<style>
+			table, tr, td {
+				overflow: scroll;
+			}
+		</style>
 	</head>
 	<body>
 		<?php
@@ -51,145 +56,168 @@
 			//fine fase di costruzione della data odierna
 		?>
 		<form name='partita' ACTION='RegistrazionePartita.php' METHOD='POST'>
-			<table border=1>
+			<table border=1 width="100%">
 			<tr>
 				<?php
-					echo("<td width='100'><b><center>Data partita</center></b></td>");
-					if($numero_giocatori>5)
-						$larghezza_cella=90*$numero_giocatori+162+20+26;
-					else
-						$larghezza_cella=90*$numero_giocatori+162+20+20;
-					echo("<td width='$larghezza_cella'><h2><center>".$dataOdierna."</center></h2></td>");
+					echo("<td width='8%'><b><center>Data partita</center></b></td>");
+					if($numero_giocatori>5) // se i giocatori sono 6
+						echo("<td width='...'><h2><center>".$dataOdierna."</center></h2></td>");
+					else // se i giocatori sono 5
+						echo("<td colspan='16'><font size=5><center><strong>".$dataOdierna."</strong></center></font></td>");					
 					echo("<INPUT NAME='data_partita' TYPE='hidden' VALUE='$dataOdierna'>");
 				?>
-				<td><b>Cappotto</b></td>   <!--<td><b>Punti mano</b></td>-->
+				<td colspan=2 rowspan=2>&nbsp;</td>
 			</tr>
-			</table>
-			<table border=1>
 			<tr>
-				<td width="100"><b><center>Nome</center></b></td>
+				<td width="8%"><b><center>Acronimo</center></b></td>
 				<?php
 					for($i=0; $i<$numero_giocatori; $i++)
 					{
 						$name_acronimo="giocatore".$i;
-						echo("<td width='90'><b><center>".$giocatore[$i]."</center></b></td>");
+						if($numero_giocatori>5) // se i giocatori sono 6
+							echo("<td width='90'><b><center>".$giocatore[$i]."</center></b></td>");
+						else // se i giocatori sono 5
+							echo("<td colspan='2'><b><center>".$giocatore[$i]."</center></b></td>");
 						echo("<INPUT NAME=$name_acronimo TYPE='hidden' VALUE=$giocatore[$i]>");
 					}
+				
+				if($numero_giocatori>5) // se i giocatori sono 6
+				{
+					echo("<td width='68'><b><center>Carta</center></b></td>
+					<td width='98'><center><b>Seme</b><center></td>
+					<td width='61'>&nbsp;</td>
+					<td width='...'>&nbsp;</td>");
+				}
+				else // se i giocatori sono 5
+				{
+					echo("<td width='4%'><b><center>Carta</center></b></td>
+					<td width='4%'><b><center>Quota vinc.</center></b></td>
+					<td colspan='4'><center><b>Seme</b><center></td>
+					<!--<td colspan=2>&nbsp;</td>
+					 <td width='14%'>&nbsp;</td> -->");
+				}
 				?>
-				<td width="68"><b><center>Carta</center></b></td>   <td width="98"><center><b>Seme</b><center></td>
-				<td width="61">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-				<!--<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
 			</tr>
-			</table>
-			<table border=1>
-				<tr>
-					<td width="100"><center><b>Chiam/Socio</b></center></td>
-					<?php
-						for($i=0; $i<$numero_giocatori; $i++)
-						{
-							if($numero_giocatori>5)
-								echo("<td width='26'><b><center>C</center></b></td><td width='26'><b><center>S</center></b></td></td><td width='26'><b><center>M</center></b></td>");
-							else
-								echo("<td width='42'><b><center>C</center></b></td><td width='42'><b><center>S</center></b></td>");
-							echo("<!--<td width='38'><b><center>Punti</center></b></td>-->");
-						}
-					?>
-					<td width="31">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td width="31">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td width='20'><center><b>C</b></center></td>
-					<td width='20'><center><b>Q</b></center></td>
-					<td width='20'><center><b>F</b></center></td>
-					<td width='20'><center><b>P</b></center></td>
-					<td width="61">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<!--<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
-				</tr>
-			</table>
-			<table border=1>
+			<tr>
+				<td width="8%"><center><b>Chiam/Socio</b></center></td>
+				<?php
+					for($i=0; $i<$numero_giocatori; $i++)
+					{
+						if($numero_giocatori>5) // se i giocatori sono 6
+							echo("<td width='26'><b><center>C</center></b></td>
+									<td width='26'><b><center>S</center></b></td>
+									</td><td width='26'><b><center>M</center></b></td>");
+						else // se i giocatori sono 5
+							echo("<td width='4%'><b><center>C</center></b></td>
+									<td width='4%'><b><center>S</center></b></td>");
+						//echo("<td width='38'><b><center>Punti</center></b></td>");
+					}
+				?>
+				<td colspan=2>&nbsp;</td>
+				<td width='4%'><center><b>C</b></center></td>
+				<td width='4%'><center><b>Q</b></center></td>
+				<td width='4%'><center><b>F</b></center></td>
+				<td width='4%'><center><b>P</b></center></td>
+				<td width='10%'><div align="center"><strong>Cappotto</strong></div></td>
+				<td width="14%">&nbsp;</td>
+			</tr>
 				<?php
 					for($i=0; $i<$numero_mani; $i++)
 					{
 						$mano=$i+1;
 						$larghezza=100;
 						echo("<tr>");
-						echo("<td width='100'><b><center>Mano n. ".$mano."</center></b></td>");
+						echo("<td width='8%'><b><center>Mano n. ".$mano."</center></b></td>");
 						for($j=0; $j<$numero_giocatori; $j++)
 						{
 							$chiamante="chiamante".$j."mano".$i;
-							if($numero_giocatori>5)
+							if($numero_giocatori>5) //se i giocatori sono 6
 								echo("<td width='26'><center><input type='checkbox' name='$chiamante' value='$giocatore[$j]'></center></td>");
-							else	
-								echo("<td width='42'><center><input type='checkbox' name='$chiamante' value='$giocatore[$j]'></center></td>");
+							else // se i giocatori sono 5	
+								echo("<td width='4%'><center><input type='checkbox' name='$chiamante' value='$giocatore[$j]'></center></td>");
 							$socio="socio".$j."mano".$i;
-							if($numero_giocatori>5)
+							if($numero_giocatori>5) // se i giocatori sono 6
 								echo("<td width='26'><center><input type='checkbox' name='$socio' value='$giocatore[$j]'></center></td>");
-							else
-								echo("<td width='42'><center><input type='checkbox' name='$socio' value='$giocatore[$j]'></center></td>");
+							else // se i giocatori sono 5
+								echo("<td width='4%'><center><input type='checkbox' name='$socio' value='$giocatore[$j]'></center></td>");
 							$morto="morto".$j."mano".$i;
-							if($numero_giocatori>5)
+							if($numero_giocatori>5) // se i giocatori sono 6; in questo caso non possono essere 5
 								echo("<td width='26'><center><input type='checkbox' name='$morto' value='$giocatore[$j]'></center></td>");
 							//$punti="punti".$j."mano".$i;
 							//echo("<td width='38'><textarea name='$punti' rows='1' cols='1'></textarea></td>");
 						}
 						$cartaChiamata="cartaChiamata".$i;
-						echo("<td><textarea name='$cartaChiamata' rows='1' cols='1'></textarea></td>");
+						echo("<td width='6%'><div align='center'><textarea name='$cartaChiamata' rows='1' cols='1'></textarea></div></td>");
 						$quotaVittoria="quotaVittoria".$i;
-						echo("<td><textarea name='$quotaVittoria' rows='1' cols='1'></textarea></td>");
+						echo("<td width='6%'><div align='center'><textarea name='$quotaVittoria' rows='1' cols='1'></textarea></div></td>");
 						$cuori="cuori".$i;
-						echo("<td><input type='checkbox' name='$cuori' value='yes'></td>");
+						echo("<td width='4%'><div align='center'><input type='checkbox' name='$cuori' value='yes'></div></td>");
 						$quadri="quadri".$i;
-						echo("<td><input type='checkbox' name='$quadri' value='yes'></td>");
+						echo("<td width='4%'><div align='center'><input type='checkbox' name='$quadri' value='yes'></div></td>");
 						$fiori="fiori".$i;
-						echo("<td><input type='checkbox' name='$fiori' value='yes'></td>");
+						echo("<td width='4%'><div align='center'><input type='checkbox' name='$fiori' value='yes'></div></td>");
 						$picche="picche".$i;
-						echo("<td><input type='checkbox' name='$picche' value='yes'></td>");
+						echo("<td width='4%'><div align='center'><input type='checkbox' name='$picche' value='yes'></div></td>");
 						$cappotto="cappotto".$i;
-						echo("<td width='61'><center><input type='checkbox' name='$cappotto' value='yes'></center></td>");
+						echo("<td width='10%'><center><input type='checkbox' name='$cappotto' value='yes'></center></div></td>");
 						$vittoriaChiamante="vittoriaChiamante".$i;
-						if($numero_giocatori>5)
-							echo("<td>Vittoria chiam.<input type='checkbox' name='$vittoriaChiamante' value='yes'></td>");
-						else
-							echo("<td><b>Vittoria chiamante</b><input type='checkbox' name='$vittoriaChiamante' value='yes'></td>");
+						if($numero_giocatori>5) // se i giocatori sono 6
+							echo("<td>Vince chiam.<input type='checkbox' name='$vittoriaChiamante' value='yes'></td>");
+						else // se i giocatori sono 5
+							echo("<td width='14%'><div align='center'><input type='checkbox' name='$vittoriaChiamante' value='yes'><b>Vince chiamante</b></div></td>");
 						echo("</tr>");
 					}
 				?>
-			</table>
-			<table border=1>
-				<tr>
-					<td width="100">&nbsp;</td>
-					<?php
-						for($i=0; $i<$numero_giocatori; $i++)
-						{
-							if($numero_giocatori>5)
-								echo("<td width='26'><b><center>C</center></b></td><td width='26'><b><center>S</center></b></td></td><td width='26'><b><center>M</center></b></td>");
-							else
-								echo("<td width='42'><b><center>C</center></b></td><td width='42'><b><center>S</center></b></td>");
-							echo("<!--<td width='38'><b><center>Punti</center></b></td>-->");
-						}
-					?>
-					<td width="31">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td width="31">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td width='20'><center><b>C</b></center></td>
-					<td width='20'><center><b>Q</b></center></td>
-					<td width='20'><center><b>F</b></center></td>
-					<td width='20'><center><b>P</b></center></td>
-					<td width="61">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<!--<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
-				</tr>
-			</table>
-			<table border=1>
 			<tr>
-				<td width="100"><b><center>&nbsp;</center></b></td>
+				<td width="8%">&nbsp;</td>
+				<?php
+					for($i=0; $i<$numero_giocatori; $i++)
+					{
+						if($numero_giocatori>5) // se i giocatori sono 6
+							echo("<td width='26'><b><center>C</center></b>
+								  </td><td width='26'><b><center>S</center></b></td>
+								  </td><td width='26'><b><center>M</center></b></td>");
+						else // se i giocatori sono 5
+							echo("<td width='4%'><b><center>C</center></b></td>
+								  <td width='4%'><b><center>S</center></b></td>");
+					}
+				?>
+				<td colspan=2>&nbsp;</td>
+				<td width='4%'><center><b>C</b></center></td>
+				<td width='4%'><center><b>Q</b></center></td>
+				<td width='4%'><center><b>F</b></center></td>
+				<td width='4%'><center><b>P</b></center></td>
+				<td width='10%'><div align="center"><strong>Cappotto</strong></div></td>
+				<td width="14%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="8%"><b><center>&nbsp;</center></b></td>
 				<?php
 					for($i=0; $i<$numero_giocatori; $i++)
 					{
 						$name_acronimo="giocatore".$i;
-						echo("<td width='90'><b><center>".$giocatore[$i]."</center></b></td>");
+						if($numero_giocatori>5) // se i giocatori sono 6
+							echo("<td width='90'><b><center>".$giocatore[$i]."</center></b></td>");
+						else // se i giocatori sono 5
+							echo("<td colspan='2'><b><center>".$giocatore[$i]."</center></b></td>");
 						echo("<INPUT NAME=$name_acronimo TYPE='hidden' VALUE=$giocatore[$i]>");
 					}
+					if($numero_giocatori>5) // se i giocatori sono 6
+						{
+							echo("<td width='68'><b><center>Carta</center></b></td>
+							<td width='98'><center><b>Seme</b><center></td>
+							<td width='61'>&nbsp;</td>
+							<td width='...'>&nbsp;</td>");
+						}
+						else // se i giocatori sono 5
+						{
+							echo("<td width='4%'><b><center>Carta</center></b></td>
+							<td width='4%'><b><center>Quota vinc.</center></b></td>
+							<td colspan='4'><center><b>Seme</b><center></td>
+							<td colspan=2>&nbsp;</td>
+							<!--<td width='14%'>&nbsp;</td> -->");
+						}
 				?>
-				<td width="68"><b><center>Carta</center></b></td>   <td width="98"><center><b>Seme</b><center></td>
-				<td width="61">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-				<!--<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
 			</tr>
 			</table>
 			<br>
