@@ -114,623 +114,591 @@
 			}
 		}
 	?>
-	<table border=1>
-		<tr>
-			<td width="100"><b><center>Data partita</center></b></td>
-			<?php
-				if($numeroGiocatori>5)
-					$larghezza_cella=90*$numeroGiocatori+274;
-				else
-					$larghezza_cella=90*$numeroGiocatori+262;
-				echo("<td width='$larghezza_cella'><h2><center>".$dataPartita."</center></h2></td>");
-				//echo("<INPUT NAME='data_partita' TYPE='hidden' VALUE='$dataOdierna'>");
-			?>
-			<td><b>Cappotto</b></td>   <!--<td><b>Punti mano</b></td>-->
-		</tr>
-	</table>
-	<table border=1>
-		<tr>
-			<td width="100"><b><center>Nome</center></b></td>
-			<?php
-				for($i=0; $i<$numeroGiocatori; $i++)
-					if($numeroGiocatori>5)
-						echo("<td width='101'><b><center>".$giocatori[$i]."</center></b></td>");
-					else
-						echo("<td width='102'><b><center>".$giocatori[$i]."</center></b></td>");
-			?>
-			<td width="68"><b><center>Carta</center></b></td>   <td width="98"><center><b>Seme</b><center></td>
-			<td width="61">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-		</tr>
-	</table>
-	<table border=1>
+	<table border=1 width="100%">
 		<tr>
 			<?php
-				if($numeroGiocatori>5)
-					echo("<td width='100'><b><center>Chiam/Socio</center></b></td>");
-				else
-					echo("<td width='100'><b><center>Chiam/Socio</center></b></td>"); 
+				if($numeroGiocatori>5) // se i giocatori sono 6
+				{
+					echo("<td width='...'><b><center>Data partita</center></b></td>");
+					echo("<td colspan=...><font size=5><center><strong>".$dataOdierna."</strong></center></font></td>");
+					echo("<td width='...' rowspan=3><b><div align='center'>Cappotto</div></b></td>");
+				}
+				else // se i giocatori sono 5
+				{
+					echo("<td width='8%'><b><center>Data partita</center></b></td>");
+					echo("<td colspan=21><h2><center>".$dataOdierna."</center></h2></td>");
+					echo("<td width='8%' rowspan=3><b><div align='center'>Cappotto</div></b></td>");
+					
+				}					
 			?>
-				<?php
-					for($i=0; $i<$numeroGiocatori; $i++)
-					{
-						if($numeroGiocatori>5)
-							echo("<td width='20'><b><center>C</center></b></td>
-							        <td width='20'><b><center>S</center></b></td>
-								<td width='20'><b><center>M</center></b></td>
-								<td width='23'><b><center>Pti</center></b></td>");
-						else
-							echo("<td width='25'><b><center>C</center></b></td>
-								<td width='25'><b><center>S</center></b></td>
-								<td width='40'><b><center>Pti</center></b></td>");
-					}
-				?>
-			<td width="31">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-			<td width="31">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-			<td width='20'><center><b>C</b></center></td>
-			<td width='20'><center><b>Q</b></center></td>
-			<td width='20'><center><b>F</b></center></td>
-			<td width='20'><center><b>P</b></center></td>
-			<td width="61">&nbsp;&nbsp;&nbsp;&nbsp;</td>
 		</tr>
-	</table> <!--Corrispondente a riga 103 del file CompilaPartita.php-->
-	<?php
-		echo("<table border='1'>");
-			//inizializzo a zero i contatori che conteranno quante volte un giocatore è stato chiamante o socio, i punti totali di ogni giocatore e 
-			//quante volte ogni giocatore ha fatto il ruolo del morto
-			for($j=0; $j<$numeroGiocatori; $j++)
-			   {
-				$quanteVolteChiamante[$j]=0;
-				$quanteVolteSocio[$j]=0;
-				$puntiTotaliGiocatore[$j]=0;
-				$quanteVolteMorto[$j]=0;
-			   }
+		<tr>
+			<?php
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					echo("<td width='...'><b><center>Acronimo</center></b></td>");
+				else  // se i giocatori sono 5
+					echo("<td width='8%'><b><center>Acronimo</center></b></td>");
 
-			for($i=0; $i<$numeroMani; $i++)
-			{				
-				$mano=$i+1;
-				$larghezza=100;
-				echo("<tr>");
-				echo("<td width='100'><b><center>Mano n. ".$mano."</center></b></td>");
-				for($j=0; $j<$numeroGiocatori; $j++)
+				for($i=0; $i<$numeroGiocatori; $i++)
+					if($numeroGiocatori>5) // se i giocatori sono 6
+						echo("<td colspan=...><b><center>".$giocatori[$i]."</center></b></td>");
+					else // se i giocatori sono 5
+						echo("<td colspan=3'><b><center>".$giocatori[$i]."</center></b></td>");
+
+				if($numeroGiocatori>5) // se i giocatori sono 6
+				echo("<td colspan=...><b><center>Carta</center></b></td>
+				      <td colspan=...><center><b>Seme</b><center></td>
+				      <!--<td width='...'>&nbsp;</td>-->");
+				else  // se i giocatori sono 5
+				echo("<td colspan=2><b><center>Carta</center></b></td>
+				      <td colspan=4><center><b>Seme</b><center></td>
+				      <!--<td width='8%'>&nbsp;</td>-->");
+			?>
+		</tr>
+		<tr>
+			<?php
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					echo("<td width='...'><b><center>Chiam/Socio</center></b></td>");
+				else // se i giocatori sono 5
+					echo("<td width='8%'><b><center>Chiam/Socio</center></b></td>"); 
+			
+				for($i=0; $i<$numeroGiocatori; $i++)
 				{
-					//mando a video i checkbox "chiamante"
-					if(($numeroGiocatori>5) and (strlen($chiamante[$i][$j])==6))
-					  {
-						echo("<td width='20'><center><input checked type='checkbox' name='$chiamante' value='$giocatori[$j]'></center></td>");
-						$quanteVolteChiamante[$j]++;
-						$update_chiama2_chiamante="UPDATE chiama2 
-											  SET chiamante='S' 
-											  WHERE acronimoGiocatore='$giocatori[$j]' AND dataPartita='$dataPartita' AND mano='$mano'";
-						mysql_query($update_chiama2_chiamante)
-							or die("Impossibile inserire nel db i chiamanti di questa partita");
-					  }
-					elseif(($numeroGiocatori>5) and ($chiamante[$i][$j]!=6))
-						echo("<td width='20'><center><input type='checkbox' name='$chiamante' value='$giocatori[$j]'></center></td>");
-					elseif(strlen($chiamante[$i][$j])==6)
-					   {
-						echo("<td width='25'><center><input checked type='checkbox' name='$chiamante' value='$giocatore[$j]'></center></td>");
-						$quanteVolteChiamante[$j]++;
-						$update_chiama2_chiamante="UPDATE chiama2 
-											  SET chiamante='S' 
-											  WHERE acronimoGiocatore='$giocatori[$j]' AND dataPartita='$dataPartita' AND mano='$mano'";
-						mysql_query($update_chiama2_chiamante)
-							or die("Impossibile inserire nel db i chiamanti di questa partita");
-					   }
-					else
-						echo("<td width='25'><center><input type='checkbox' name='$chiamante' value='$giocatore[$j]'></center></td>");
-					
-					//mando a video i checkbox "socio"
-					if(($numeroGiocatori>5) and (strlen($socio[$i][$j])==6))
-					   {
-						echo("<td width='20'><center><input checked type='checkbox' name='$socio' value='$giocatori[$j]'></center></td>");
-						$quanteVolteSocio[$j]++;
-						$update_chiama2_socio="UPDATE chiama2 
-										   SET socio='S' 
-										   WHERE acronimoGiocatore='$giocatori[$j]' AND dataPartita='$dataPartita' AND mano='$mano'";
-						mysql_query($update_chiama2_socio)
-							or die("Impossibile inserire nel db i soci di questa partita");
-					   }
-					elseif($numeroGiocatori>5)
-						echo("<td width='20'><center><input type='checkbox' name='$socio' value='$giocatori[$j]'></center></td>");
-					elseif(strlen($socio[$i][$j])==6)
-					   {
-						echo("<td width='25'><center><input checked type='checkbox' name='$socio' value='$giocatore[$j]'></center></td>");
-						$quanteVolteSocio[$j]++;
-						$update_chiama2_socio="UPDATE chiama2 
-										   SET socio='S' 
-										   WHERE acronimoGiocatore='$giocatori[$j]' AND dataPartita='$dataPartita' AND mano='$mano'";
-						mysql_query($update_chiama2_socio)
-							or die("Impossibile inserire nel db i soci di questa partita");
-					   }
-					else
-						echo("<td width='25'><center><input type='checkbox' name='$socio' value='$giocatore[$j]'></center></td>");
-					
-					//mando a video i checkbox "morto"
-					if(($numeroGiocatori>5) and (strlen($morto[$i][$j])==6))
-					   {
-						echo("<td width='20'><center><input checked type='checkbox' name='$morto' value='$giocatori[$j]'></center></td>");
-						$quanteVolteMorto[$j]++;
-						$update_chiama2_morto="UPDATE chiama2 
-										    SET morto='S' 
-										    WHERE acronimoGiocatore='$giocatori[$j]' AND dataPartita='$dataPartita' AND mano='$mano'";
-						mysql_query($update_chiama2_morto)
-							or die("Impossibile inserire nel db i morti di questa partita");
-					   }
-					elseif($numeroGiocatori>5)
-						echo("<td width='20'><center><input type='checkbox' name='$morto' value='$giocatori[$j]'></center></td>");
-						
-					//mando a video le caselle punti
-					if($numeroGiocatori>5)
-						$larg_cella=23;
-					else
-						$larg_cella=40;
-					if((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])==6) and ($vittoriaChiamante[$i]=="yes"))
-					   {
-						$puntiChiamante=$puntiMano[$i]*2;
-						$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
-						if($puntiChiamante<0)
-							echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiChiamante."</center></b></font></td>");
-						else
-							echo("<td width='$larg_cella'><b><center>".$puntiChiamante."</center></b></td>");
-						$update_chiama2_punti="UPDATE chiama2 
-										   SET punti=$puntiChiamante 
-										   WHERE acronimoGiocatore='$chiHaChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
-						mysql_query($update_chiama2_punti)
-							or die("Impossibile inserire nel db i punti di ciascun chiamante per ogni mano");
-						$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiChiamante;
-					   }
-					elseif((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])==6) and ($vittoriaChiamante[$i]!="yes"))
-					   {
-						$puntiChiamante=($puntiMano[$i]*(-2));
-						$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
-						if($puntiChiamante<0)
-							echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiChiamante."</center></b></font></td>");
-						else
-							echo("<td width='$larg_cella'><b><center>".$puntiChiamante."</center></b></td>");
-						$update_chiama2_punti="UPDATE chiama2 
-										   SET punti=$puntiChiamante 
-										   WHERE acronimoGiocatore='$chiHaChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
-						mysql_query($update_chiama2_punti)
-							or die("Impossibile inserire nel db i punti di ciascun chiamante per ogni mano");
-						$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiChiamante;
-					   }
-					elseif((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])!=6) and ($vittoriaChiamante[$i]=="yes"))
-					   {
-						$puntiChiamante=$puntiMano[$i];
-						$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
-						if($puntiChiamante<0)
-							echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiChiamante."</center></b></font></td>");
-						else
-							echo("<td width='$larg_cella'><b><center>".$puntiChiamante."</center></b></td>");
-						$update_chiama2_punti="UPDATE chiama2 
-										   SET punti=$puntiChiamante 
-										   WHERE acronimoGiocatore='$chiHaChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
-						mysql_query($update_chiama2_punti)
-							or die("Impossibile inserire nel db i punti di ciascun chiamante per ogni mano");
-						$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiChiamante;
-					   }
-					elseif((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])!=6) and ($vittoriaChiamante[$i]!="yes"))
-					   {
-						$puntiChiamante=$puntiMano[$i]*(-1);
-						$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchèè se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
-						if($puntiChiamante<0)
-							echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiChiamante."</center></b></font></td>");
-						else
-							echo("<td width='$larg_cella'><b><center>".$puntiChiamante."</center></b></td>");
-						$update_chiama2_punti="UPDATE chiama2 
-										   SET punti=$puntiChiamante 
-										   WHERE acronimoGiocatore='$chiHaChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
-						mysql_query($update_chiama2_punti)
-							or die("Impossibile inserire nel db i punti di ciascun chiamante per ogni mano");
-						$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiChiamante;
-					   }
-					elseif((strlen($socio[$i][$j])==6) and (strlen($chiamante[$i][$j])!=6) and ($vittoriaChiamante[$i]=="yes"))
-					   {
-						$puntiSocio=$puntiMano[$i]/2;
-						$chiEStatoChiamato=$socio[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $socio[$i][$j] l'update non funziona
-						if($puntiSocio<0)
-							echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiSocio."</center></b></font></td>");
-						else
-							echo("<td width='$larg_cella'><b><center>".$puntiSocio."</center></b></td>");
-						$update_chiama2_punti="UPDATE chiama2 
-										   SET punti=$puntiSocio 
-										   WHERE acronimoGiocatore='$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
-						mysql_query($update_chiama2_punti)
-							or die("Impossibile inserire nel db i punti di ciascun socio per ogni mano");
-						$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiSocio;
-					   }
-					elseif((strlen($socio[$i][$j])==6) and (strlen($chiamante[$i][$j])!=6) and ($vittoriaChiamante[$i]!="yes"))
-					   {
-						$puntiSocio=($puntiMano[$i]/2)*(-1);
-						$chiEStatoChiamato=$socio[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $socio[$i][$j] l'update non funziona
-						if($puntiSocio<0)
-							echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiSocio."</center></b></font></td>");
-						else
-							echo("<td width='$larg_cella'><b><center>".$puntiSocio."</center></b></td>");
-						$update_chiama2_punti="UPDATE chiama2 
-										   SET punti=$puntiSocio
-										   WHERE acronimoGiocatore='$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
-						mysql_query($update_chiama2_punti)
-							or die("Impossibile inserire nel db i punti di ciascun socio per ogni mano");
-						$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiSocio;
-					   }
-					elseif((strlen($chiamante[$i][$j])!=6) and (strlen($socio[$i][$j])!=6) and ($chiamatoInMano[$i]==1) and ($vittoriaChiamante[$i]=="yes"))
-					   {
-						if(($numeroGiocatori<=5) or (($numeroGiocatori>5) and ($morto[$i][$j]!=$giocatori[$j])))
-						{
-							$puntiGiocatore=(($puntiMano[$i]*2)/(-4));
-							if($puntiGiocatore<0)
-								echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiGiocatore."</center></b></font></td>");
-							else
-								echo("<td width='$larg_cella'><b><center>".$puntiGiocatore."</center></b></td>");
-							/*$queryCondizione="SELECT punti 
-										FROM chiama2 
-										WHERE acronimoGiocatore<>'$chiHaChiamato' AND acronimoGiocatore<>'$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
-							$condizione=mysql_query($queryCondizione)
-								or die("Impossibile eseguire la query di condizione 1");
-							echo("Condizione1=".$condizione."<br>");*/
-							//if($condizione==0)
-							//{
-							$update_chiama2_punti="UPDATE chiama2 
-											SET punti='$puntiGiocatore' 
-											WHERE chiamante='N' AND socio='N' AND dataPartita='$dataPartita' AND mano='$mano' and punti=0"; //WHERE acronimoGiocatore<>'$chiHaChiamato' AND acronimoGiocatore<>'$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano' AND $condizione=0";
-							mysql_query($update_chiama2_punti)
-								or die("1 - Impossibile inserire nel db i punti dei giocatori non chiamenti n&eacute; soci");
-							//}
-							$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiGiocatore;
-						}
-						else
-						{
-							$puntiGiocatore=0;
-							echo("<td width='$larg_cella'><b><center>".$puntiGiocatore."</center></b></td>");
-						}
-					   }
-					elseif((strlen($chiamante[$i][$j])!=6) and (strlen($socio[$i][$j])!=6) and ($chiamatoInMano[$i]==1) and ($vittoriaChiamante[$i]!="yes"))
-					   {
-						if(($numeroGiocatori<=5) or (($numeroGiocatori>5) and ($morto[$i][$j]!=$giocatori[$j])))
-						{
-							$puntiGiocatore=(($puntiMano[$i]*2)/(4));
-							if($puntiGiocatore<0)
-								echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiGiocatore."</center></b></font></td>");
-							else
-								echo("<td width='$larg_cella'><b><center>".$puntiGiocatore."</center></b></td>");
-							/*$queryCondizione="SELECT punti 
-										FROM chiama2 
-										WHERE acronimoGiocatore<>'$chiHaChiamato' AND acronimoGiocatore<>'$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
-							$condizione=mysql_query($queryCondizione)
-								or die("Impossibile eseguire la query di condizione 2");
-							echo("Condizione2=".$condizione."<br>");*/
-								//if($condizione==0)
-							//{
-							$update_chiama2_punti="UPDATE chiama2 
-											SET punti='$puntiGiocatore' 
-											WHERE chiamante='N' AND socio='N' AND dataPartita='$dataPartita' AND mano='$mano' and punti=0"; //WHERE acronimoGiocatore<>'$chiHaChiamato' AND acronimoGiocatore<>'$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano' AND $condizione=0";
-							mysql_query($update_chiama2_punti)
-								or die("2 - Impossibile inserire nel db i punti dei giocatori non chiamenti n&eacute; soci");
-							//}
-							$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiGiocatore;
-						}
-						else
-						{
-							$puntiGiocatore=0;
-							echo("<td width='$larg_cella'><b><center>".$puntiGiocatore."</center></b></td>");
-						}
-					   }
-					elseif((strlen($chiamante[$i][$j])!=6) and (strlen($socio[$i][$j])!=6) and ($chiamatoInMano[$i]==0) and ($vittoriaChiamante[$i]=="yes"))
-					   {
-						if(($numeroGiocatori<=5) or (($numeroGiocatori>5) and ($morto[$i][$j]!=$giocatori[$j])))
-						{
-							$puntiGiocatore=((($puntiMano[$i]+($puntiMano[$i]/2))/3))*(-1);
-							if($puntiGiocatore<0)
-								echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiGiocatore."</center></b></font></td>");
-							else
-								echo("<td width='$larg_cella'><b><center>".$puntiGiocatore."</center></b></td>");
-							//echo("I punti giocatore sono ".$puntiGiocatore."<br>");
-							/*$queryCondizione="SELECT punti
-										FROM chiama2
-										WHERE chiamante='N' AND socio='N' AND dataPartita='$dataPartita' AND mano='$mano'";*/
-										/*"SELECT punti 
-										FROM chiama2 
-										WHERE acronimoGiocatore!='$chiHaChiamato' AND acronimoGiocatore!='$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano'"; */
-							/*$condizione=mysql_query($queryCondizione)
-								or die("Impossibile eseguire la query di condizione 3");
-							echo("Condizione3=".$condizione."<br>");*/
-							//if(($condizione==0) or ($condizione==null))
-							//{
-							$update_chiama2_punti="UPDATE chiama2 
-											SET punti='$puntiGiocatore' 
-											WHERE chiamante='N' AND socio='N' AND dataPartita='$dataPartita' AND mano='$mano' and punti=0";//WHERE acronimoGiocatore<>'$chiHaChiamato' AND acronimoGiocatore<>'$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano' AND $condizione=0";
-							mysql_query($update_chiama2_punti)
-								or die("3 - Impossibile inserire nel db i punti dei giocatori non chiamenti n&eacute; soci");
-							//}
-							$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiGiocatore;
-						}
-						else
-						{
-							$puntiGiocatore=0;
-							echo("<td width='$larg_cella'><b><center>".$puntiGiocatore."</center></b></td>");
-						}
-					   }
-					elseif((strlen($chiamante[$i][$j])!=6) and (strlen($socio[$i][$j])!=6) and ($chiamatoInMano[$i]==0) and ($vittoriaChiamante[$i]!="yes"))
-					   {
-						if(($numeroGiocatori<=5) or (($numeroGiocatori>5) and ($morto[$i][$j]!=$giocatori[$j])))
-						{
-							$puntiGiocatore=((($puntiMano[$i]+($puntiMano[$i]/2))/3));
-							if($puntiGiocatore<0)
-								echo("<td width='$larg_cella'><font color='##FF0000'><b><center>".$puntiGiocatore."</center></b></font></td>");
-							else
-								echo("<td width='$larg_cella'><b><center>".$puntiGiocatore."</center></b></td>");
-							/*$queryCondizione="SELECT punti 
-										FROM chiama2 
-										WHERE acronimoGiocatore<>'$chiHaChiamato' AND acronimoGiocatore<>'$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
-							$condizione=mysql_query($queryCondizione)
-								or die("Impossibile eseguire la query di condizione 4");
-							echo("Condizione4=".$condizione."<br>");*/
-							//if(($condizione==0) or ($condizione==null))
-							//{
-							$update_chiama2_punti="UPDATE chiama2 
-											SET punti='$puntiGiocatore' 
-											WHERE chiamante='N' AND socio='N' AND dataPartita='$dataPartita' AND mano='$mano' and punti=0";//WHERE acronimoGiocatore<>'$chiHaChiamato' AND acronimoGiocatore<>'$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano' AND $condizione=0";
-							mysql_query($update_chiama2_punti)
-								or die("4 - Impossibile inserire nel db i punti dei giocatori non chiamenti n&eacute; soci");
-							//}
-							$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiGiocatore;
-						}
-						else
-						{
-							$puntiGiocatore=0;
-							echo("<td width='$larg_cella'><b><center>".$puntiGiocatore."</center></b></td>");
-						}
-					   }
-				} // fine for($j=0; $j<$numeroGiocatori; $j++)
-				for($j=0; $j<$numeroGiocatori; $j++)
-				{
-					if($numeroGiocatori>5)
-					{
-						for($j=0; $j<$numeroGiocatori; $j++)
-						{
-							if($morto[$i][$j]==$giocatori[$j])
-							{
-								$update_punti_morto="UPDATE chiama2
-												SET punti=0
-												WHERE chiamante='N' and socio='N' and datapartita='$dataPartita' and mano='$mano' and morto='S'";
-								mysql_query($update_punti_morto)
-									or die("Impossibile impostare a zero i punti dei giocatori che, nelle varie mani, hanno saltato il turno");
-							}
-						}
-					}
+					if($numeroGiocatori>5) // se i giocatori sono 6
+						echo("<td width='20'><b><center>C</center></b></td>
+							  <td width='20'><b><center>S</center></b></td>
+							  <td width='20'><b><center>M</center></b></td>
+							  <td width='23'><b><center>Pti</center></b></td>");
+					else // se i giocatori sono 5
+						echo("<td width='4%'><b><center>C</center></b></td>
+							<td width='4%'><b><center>S</center></b></td>
+							<td width='4%'><b><center>Pti</center></b></td>");
 				}
-				echo("<td width='31'><center><b>".$cartaChiamata[$i]."</b></center></td>");
-				echo("<td width='31'><center><b>".$quotaVittoria[$i]."</b></center></td>");
-				if($cuori[$i]=="yes")
-					echo("<td width='20'><center><input checked type='checkbox' name='$cuori[$i]' value='$cuori[$i]'></center></td>");
-				else
-					echo("<td width='20'><center><input type='checkbox' name='$cuori[$i]' value='$cuori[$i]'></center></td>");
-				if($quadri[$i]=="yes")
-					echo("<td width='20'><center><input checked type='checkbox' name='$quadri[$i]' value='$quadri[$i]'></center></td>");
-				else
-					echo("<td width='20'><center><input type='checkbox' name='$quadri[$i]' value='$quadri[$i]'></center></td>");
-				if($fiori[$i]=="yes")
-					echo("<td width='20'><center><input checked type='checkbox' name='$fiori[$i]' value='$fiori[$i]'></center></td>");
-				else
-					echo("<td width='20'><center><input type='checkbox' name='$fiori[$i]' value='$fiori[$i]'></center></td>");
-				if($picche[$i]=="yes")
-					echo("<td width='20'><center><input checked type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
-				else
-					echo("<td width='20'><center><input type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
-				if($cappotto[$i]=="yes")
-				{
-					echo("<td width='61'><center><input checked type='checkbox' name='$cappotto[$i]' value='$cappotto[$i]'></center></td>");
-					$update_cappotto="UPDATE partita
-								   SET cappotto='S'
-								   WHERE datapartita='$dataPartita' and mano='$mano'";
-					mysql_query($update_cappotto)
-						or die("Impossibile impostare ad S il valore del campo cappotto".mysql_error());
-				}
-				else
-				{
-					echo("<td width='61'><center><input type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
-					$update_cappotto="UPDATE partita
-								   SET cappotto='N'
-								   WHERE datapartita='$dataPartita' and mano='$mano'";
-					mysql_query($update_cappotto)
-						or die("Impossibile impostare ad N il valore del campo cappotto".mysql_error());
-				}
-				echo("</tr>");
-			} // fine for($i=0; $i<$numeroMani; $i++)
-		echo("</table>");
-		
-		echo("<table border='1'>");
+
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					echo("<td colspan=...>&nbsp;</td>
+					<td width='...'><center><b>C</b></center></td>
+					<td width='...'><center><b>Q</b></center></td>
+					<td width='...'><center><b>F</b></center></td>
+					<td width='...'><center><b>P</b></center></td>
+					<!--<td width='...'>&nbsp;</td>-->");
+				else // se i giocatori sono 5
+					echo("<td colspan=2>&nbsp;</td>
+					<td width='4%'><center><b>C</b></center></td>
+					<td width='4%'><center><b>Q</b></center></td>
+					<td width='4%'><center><b>F</b></center></td>
+					<td width='4%'><center><b>P</b></center></td>
+					<!--<td width='8%'>&nbsp;</td>-->");
+			?>
+		</tr>
+	<?php
+		//inizializzo a zero i contatori che conteranno quante volte un giocatore è stato chiamante o socio, i punti totali di ogni giocatore e 
+		//quante volte ogni giocatore ha fatto il ruolo del morto
+		for($j=0; $j<$numeroGiocatori; $j++)
+			{
+			$quanteVolteChiamante[$j]=0;
+			$quanteVolteSocio[$j]=0;
+			$puntiTotaliGiocatore[$j]=0;
+			$quanteVolteMorto[$j]=0;
+			}
+
+		for($i=0; $i<$numeroMani; $i++)
+		{				
+			$mano=$i+1;
+			$larghezza=100;
 			echo("<tr>");
-				echo("<td width='100'><b><center>Totale punti</center></b></td>");
-				for($j=0; $j<$numeroGiocatori; $j++)
-				{
-					if($numeroGiocatori>5)
-					   {
-						echo("<td width='20'><b><center>".$quanteVolteChiamante[$j]."</center></b></td>");
-						echo("<td width='20'><b><center>".$quanteVolteSocio[$j]."</center></b></td>");
-						echo("<td width='20'><b><center>".$quanteVolteMorto[$j]."</center></b></td>");
-						if($puntiTotaliGiocatore[$j]<0)
-							echo("<td width='23'><font color='##FF0000'><b><center>".$puntiTotaliGiocatore[$j]."</center></b></font></td>");
-						else
-							echo("<td width='23'><b><center>".$puntiTotaliGiocatore[$j]."</center></b></td>");
-					   }
-					else
-					   {
-						echo("<td width='25'><b><center>".$quanteVolteChiamante[$j]."</center></b></td>");
-						echo("<td width='25'><b><center>".$quanteVolteSocio[$j]."</center></b></td>");
-						if($puntiTotaliGiocatore[$j]<0)
-							echo("<td width='40'><font color='##FF0000'><b><center>".$puntiTotaliGiocatore[$j]."</center></b></font></td>");
-						else
-							echo("<td width='40'><b><center>".$puntiTotaliGiocatore[$j]."</center></b></td>");
-					   }
-					$query="UPDATE totPuntiPartita 
-						    SET totPunti=$puntiTotaliGiocatore[$j]
-						    WHERE dataPartita='$dataPartita' AND acronimoGiocatore='$giocatori[$j]'";
-					mysql_query($query)
-						or die("Impossibile compilare il campo 'totPunti' della tabella totPuntiPartita");
-				}
-			echo("</tr>");
-		echo("</table>");
-		
-		//algoritmo per mandare a video i valori delle posizioni
-		echo("<table border='1'>");
-			echo("<tr>");
-				echo("<td width='100'><b><center>POSIZIONE</center></b></td>");
-				for($j=0; $j<$numeroGiocatori; $j++)
-				{
-					$punteggio[$j]=round($puntiTotaliGiocatore[$j]+($quanteVolteChiamante[$j]*1/10)+($quanteVolteSocio[$j]*1/100), 2);
-					$perConfronto[$j]=$punteggio[$j];
-				}
-				do
-				{
-					$effettuatiScambi=0;
-					for($j=0; $j<$numeroGiocatori-1; $j++)
-					{
-						if($punteggio[$j]<$punteggio[$j+1])
-						{
-							$ausiliaria=$punteggio[$j];
-							$punteggio[$j]=$punteggio[$j+1];
-							$punteggio[$j+1]=$ausiliaria;
-							$effettuatiScambi=1;
-						}
-					}
-				}
-				while($effettuatiScambi==1); //fine while che ordina la variabile $punteggio, facendole contenere tutti i punteggi in ordine decrescente
-				// la variabile $punteggio contiene i punteggi in ordine decrescente, mentre $perConfronto contiene i punteggi nell'orgine originale
-				/*for($j=0; $j<$numeroGiocatori; $j++)
-				{
-					echo("Spunteggio= ".$punteggio[$j]." - Sperconfronto= ".$perConfronto[$j]."<br>");
-				}
-				$punteggioTrovato=null;
-				for($j=0; $j<$numeroGiocatori; $j++)
-				{
-					$indice=0;
-					$trovato=0;
-					$passaggioNelCicloFor=$j+1;
-					do
-					{
-						// la variabile $punteggio contiene i punteggi in ordine decrescente, mentre $perConfronto contiene i punteggi nell'orgine originale
-						if($perConfronto[$indice]==$punteggio[$j])
-						{
-							$trovato=1;
-							$perConfronto[$indice]=null;
-							if($j==0)
-							{
-								$punteggioTrovato=$punteggio[$j];
-								$indicePunteggioTrovato=$indice+1; // metto +1 perchè la variabile $indice parte da zero
-								$indiceAVideo[$j]=$indicePunteggioTrovato;
-								$punteggioAVideo[$j]=$punteggioTrovato;
-							}
-							// la variabile $punteggio contiene i punteggi in ordine decrescente, mentre $perConfronto contiene i punteggi nell'orgine originale
-							else
-							{
-								if($punteggio[$j]==$punteggioTrovato)
-								{
-									$indiceAVideo[$j]=$indicePunteggioTrovato;
-									$punteggioAVideo[$j]=$punteggioTrovato;
-								}
-								else
-								{
-									$indicePunteggioTrovato=$passaggioNelCicloFor;
-									$punteggioTrovato=$punteggio[$j];
-									$indiceAVideo[$j]=$passaggioNelCicloFor;
-									$punteggioAVideo[$j]=$punteggio[$j];
-								}
-							}
-						}
-						$indice++;
-					}
-					while($trovato==0);
-				}// fine del ciclo for che permette di costruire due vettori di indici e punteggi per mandare a video il valore dei punteggi
-				*/
-				$posizioneRiferimento=null;
-				$punteggioRiferimento=null;
-				for($j=0;$j<$numeroGiocatori;$j++)
-				{
-					$posizione=$j+1; // è il valore che va a video
-					$trovato=0;
-					$i=0;
-					do
-					{
-						// la variabile $punteggio contiene i punteggi in ordine decrescente, mentre $perConfronto contiene i punteggi nell'orgine originale
-						if(($punteggio[$j]==$perConfronto[$i]) and ($punteggio[$j]!=$punteggioRiferimento))
-						{	
-							$trovato=1;
-							$punteggioRiferimento=$punteggio[$j];
-							$posizioneRiferimento=$posizione;
-							$rango[$i]=$posizioneRiferimento;
-							$perConfronto[$i]=null;
-						}
-						elseif(($punteggio[$j]==$perConfronto[$i]) and ($punteggio[$j]==$punteggioRiferimento))
-						{
-							$trovato=1;
-							$rango[$i]=$posizioneRiferimento;
-							$perConfronto[$i]=null;
-						}
-						$i++;
-					}
-					while($trovato==0);
-				}
-				/*for($j=0; $j<$numeroGiocatori; $j++)
-				{
-					echo($rango[$j]."<br>");
-				}
-				for($j=0; $j<$numeroGiocatori; $j++)
-				{
-					//echo("SpunteggioAVideo: ".$punteggioAVideo[$j]." - Posizione: ".$indiceAVideo[$j]."<br>");
-					$perConfronto[$j]=round($puntiTotaliGiocatore[$j]+($quanteVolteChiamante[$j]*1/10)+($quanteVolteSocio[$j]*1/100), 2);
-					echo("Punteggi originali: ".$perConfronto[$j]."<br>");					
-				}
-				*/
-				for($j=0; $j<$numeroGiocatori; $j++)
-				{
-					if($numeroGiocatori>5)
-						echo("<td width='101'><b><center>".$rango[$j]."</center></b></td>");
-					else
-						echo("<td width='102'><b><center>".$rango[$j]."</center></b></td>");
-					$query="UPDATE posizioni 
-						    SET posizione='$rango[$j]' 
-						    WHERE dataPartita='$dataPartita' AND acronimoGiocatore='$giocatori[$j]'";
-					mysql_query($query)
-						or die("Impossibile compilare il campo 'posizione' della tabella posizioni");
-				}
-			echo("</tr>");
-		echo("</table>");
-		
-		//algoritmo per mandare a video i punti classifica
-		echo("<table border='1'>");
-			echo("<tr>");
-				echo("<td width='100'><b><center>Pti Classifica</center></b></td>");
+			if($numeroGiocatori>5) // se i giocatori sono 6
+				echo("<td width='...'><b><center>Mano n. ".$mano."</center></b></td>");
+			else // se i giocatori sono 5
+			echo("<td width='8%'><b><center>Mano n. ".$mano."</center></b></td>");
 			for($j=0; $j<$numeroGiocatori; $j++)
 			{
-				if($rango[$j]==1)
-					$puntiClassificaPartita[$j]=((0.1*$puntiTotaliGiocatore[$j])+14);
-				elseif($rango[$j]==2)
-					$puntiClassificaPartita[$j]=((0.1*$puntiTotaliGiocatore[$j])+10);
-				elseif($rango[$j]==3)
-					$puntiClassificaPartita[$j]=((0.1*$puntiTotaliGiocatore[$j])+7);
-				elseif($rango[$j]==4)
-					$puntiClassificaPartita[$j]=((0.1*$puntiTotaliGiocatore[$j])+4);
+				//mando a video i checkbox "chiamante"
+				if(($numeroGiocatori>5) and (strlen($chiamante[$i][$j])==6))
+					{
+					echo("<td width='...'><center><input checked type='checkbox' name='$chiamante' value='$giocatori[$j]'></center></td>");
+					$quanteVolteChiamante[$j]++;
+					$update_chiama2_chiamante="UPDATE chiama2 
+											SET chiamante='S' 
+											WHERE acronimoGiocatore='$giocatori[$j]' AND dataPartita='$dataPartita' AND mano='$mano'";
+					mysql_query($update_chiama2_chiamante)
+						or die("Impossibile inserire nel db i chiamanti di questa partita");
+					}
+				elseif(($numeroGiocatori>5) and ($chiamante[$i][$j]!=6))
+					echo("<td width='...'><center><input type='checkbox' name='$chiamante' value='$giocatori[$j]'></center></td>");
+				elseif(strlen($chiamante[$i][$j])==6)
+					{
+					echo("<td width='4%'><center><input checked type='checkbox' name='$chiamante' value='$giocatore[$j]'></center></td>");
+					$quanteVolteChiamante[$j]++;
+					$update_chiama2_chiamante="UPDATE chiama2 
+											SET chiamante='S' 
+											WHERE acronimoGiocatore='$giocatori[$j]' AND dataPartita='$dataPartita' AND mano='$mano'";
+					mysql_query($update_chiama2_chiamante)
+						or die("Impossibile inserire nel db i chiamanti di questa partita");
+					}
 				else
-					$puntiClassificaPartita[$j]=((0.1*$puntiTotaliGiocatore[$j])+1);
+					echo("<td width='4%'><center><input type='checkbox' name='$chiamante' value='$giocatore[$j]'></center></td>");
+				
+				//mando a video i checkbox "socio"
+				if(($numeroGiocatori>5) and (strlen($socio[$i][$j])==6))
+					{
+					echo("<td width='...'><center><input checked type='checkbox' name='$socio' value='$giocatori[$j]'></center></td>");
+					$quanteVolteSocio[$j]++;
+					$update_chiama2_socio="UPDATE chiama2 
+										SET socio='S' 
+										WHERE acronimoGiocatore='$giocatori[$j]' AND dataPartita='$dataPartita' AND mano='$mano'";
+					mysql_query($update_chiama2_socio)
+						or die("Impossibile inserire nel db i soci di questa partita");
+					}
+				elseif($numeroGiocatori>5)
+					echo("<td width='...'><center><input type='checkbox' name='$socio' value='$giocatori[$j]'></center></td>");
+				elseif(strlen($socio[$i][$j])==6)
+					{
+					echo("<td width='4%'><center><input checked type='checkbox' name='$socio' value='$giocatore[$j]'></center></td>");
+					$quanteVolteSocio[$j]++;
+					$update_chiama2_socio="UPDATE chiama2 
+										SET socio='S' 
+										WHERE acronimoGiocatore='$giocatori[$j]' AND dataPartita='$dataPartita' AND mano='$mano'";
+					mysql_query($update_chiama2_socio)
+						or die("Impossibile inserire nel db i soci di questa partita");
+					}
+				else
+					echo("<td width='4%'><center><input type='checkbox' name='$socio' value='$giocatore[$j]'></center></td>");
+				
+				//mando a video i checkbox "morto"
+				if(($numeroGiocatori>5) and (strlen($morto[$i][$j])==6))
+					{
+					echo("<td width='...'><center><input checked type='checkbox' name='$morto' value='$giocatori[$j]'></center></td>");
+					$quanteVolteMorto[$j]++;
+					$update_chiama2_morto="UPDATE chiama2 
+										SET morto='S' 
+										WHERE acronimoGiocatore='$giocatori[$j]' AND dataPartita='$dataPartita' AND mano='$mano'";
+					mysql_query($update_chiama2_morto)
+						or die("Impossibile inserire nel db i morti di questa partita");
+					}
+				elseif($numeroGiocatori>5)
+					echo("<td width='...'><center><input type='checkbox' name='$morto' value='$giocatori[$j]'></center></td>");
+					
+				//mando a video le caselle punti
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					$larg_cella="'...'";
+				else // se i giocatori sono 5
+					$larg_cella="'4%'";
+				if((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])==6) and ($vittoriaChiamante[$i]=="yes"))
+					{
+					$puntiChiamante=$puntiMano[$i]*2;
+					$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
+					if($puntiChiamante<0)
+						echo("<td width=".$larg_cella."><font color='##FF0000'><b><center>".$puntiChiamante."</center></b></font></td>");
+					else
+						echo("<td width=".$larg_cella."><b><center>".$puntiChiamante."</center></b></td>");
+					$update_chiama2_punti="UPDATE chiama2 
+										SET punti=$puntiChiamante 
+										WHERE acronimoGiocatore='$chiHaChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
+					mysql_query($update_chiama2_punti)
+						or die("Impossibile inserire nel db i punti di ciascun chiamante per ogni mano");
+					$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiChiamante;
+					}
+				elseif((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])==6) and ($vittoriaChiamante[$i]!="yes"))
+					{
+					$puntiChiamante=($puntiMano[$i]*(-2));
+					$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
+					if($puntiChiamante<0)
+						echo("<td width=".$larg_cella."><font color='##FF0000'><b><center>".$puntiChiamante."</center></b></font></td>");
+					else
+						echo("<td width=".$larg_cella."><b><center>".$puntiChiamante."</center></b></td>");
+					$update_chiama2_punti="UPDATE chiama2 
+										SET punti=$puntiChiamante 
+										WHERE acronimoGiocatore='$chiHaChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
+					mysql_query($update_chiama2_punti)
+						or die("Impossibile inserire nel db i punti di ciascun chiamante per ogni mano");
+					$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiChiamante;
+					}
+				elseif((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])!=6) and ($vittoriaChiamante[$i]=="yes"))
+					{
+					$puntiChiamante=$puntiMano[$i];
+					$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
+					if($puntiChiamante<0)
+						echo("<td width=".$larg_cella."><font color='##FF0000'><b><center>".$puntiChiamante."</center></b></font></td>");
+					else
+						echo("<td width=".$larg_cella."><b><center>".$puntiChiamante."</center></b></td>");
+					$update_chiama2_punti="UPDATE chiama2 
+										SET punti=$puntiChiamante 
+										WHERE acronimoGiocatore='$chiHaChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
+					mysql_query($update_chiama2_punti)
+						or die("Impossibile inserire nel db i punti di ciascun chiamante per ogni mano");
+					$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiChiamante;
+					}
+				elseif((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])!=6) and ($vittoriaChiamante[$i]!="yes"))
+					{
+					$puntiChiamante=$puntiMano[$i]*(-1);
+					$chiHaChiamato=$chiamante[$i][$j]; // necessito di inserire questa variabile perchèè se nell'update qui sotto metto la variabile $chiamante[$i][$j] l'update non funziona
+					if($puntiChiamante<0)
+						echo("<td width=".$larg_cella."><font color='##FF0000'><b><center>".$puntiChiamante."</center></b></font></td>");
+					else
+						echo("<td width=".$larg_cella."><b><center>".$puntiChiamante."</center></b></td>");
+					$update_chiama2_punti="UPDATE chiama2 
+										SET punti=$puntiChiamante 
+										WHERE acronimoGiocatore='$chiHaChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
+					mysql_query($update_chiama2_punti)
+						or die("Impossibile inserire nel db i punti di ciascun chiamante per ogni mano");
+					$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiChiamante;
+					}
+				elseif((strlen($socio[$i][$j])==6) and (strlen($chiamante[$i][$j])!=6) and ($vittoriaChiamante[$i]=="yes"))
+					{
+					$puntiSocio=$puntiMano[$i]/2;
+					$chiEStatoChiamato=$socio[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $socio[$i][$j] l'update non funziona
+					if($puntiSocio<0)
+						echo("<td width=".$larg_cella."><font color='##FF0000'><b><center>".$puntiSocio."</center></b></font></td>");
+					else
+						echo("<td width=".$larg_cella."><b><center>".$puntiSocio."</center></b></td>");
+					$update_chiama2_punti="UPDATE chiama2 
+										SET punti=$puntiSocio 
+										WHERE acronimoGiocatore='$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
+					mysql_query($update_chiama2_punti)
+						or die("Impossibile inserire nel db i punti di ciascun socio per ogni mano");
+					$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiSocio;
+					}
+				elseif((strlen($socio[$i][$j])==6) and (strlen($chiamante[$i][$j])!=6) and ($vittoriaChiamante[$i]!="yes"))
+					{
+					$puntiSocio=($puntiMano[$i]/2)*(-1);
+					$chiEStatoChiamato=$socio[$i][$j]; // necessito di inserire questa variabile perchè se nell'update qui sotto metto la variabile $socio[$i][$j] l'update non funziona
+					if($puntiSocio<0)
+						echo("<td width=".$larg_cella."><font color='##FF0000'><b><center>".$puntiSocio."</center></b></font></td>");
+					else
+						echo("<td width=".$larg_cella."><b><center>".$puntiSocio."</center></b></td>");
+					$update_chiama2_punti="UPDATE chiama2 
+										SET punti=$puntiSocio
+										WHERE acronimoGiocatore='$chiEStatoChiamato' AND dataPartita='$dataPartita' AND mano='$mano'";
+					mysql_query($update_chiama2_punti)
+						or die("Impossibile inserire nel db i punti di ciascun socio per ogni mano");
+					$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiSocio;
+					}
+				elseif((strlen($chiamante[$i][$j])!=6) and (strlen($socio[$i][$j])!=6) and ($chiamatoInMano[$i]==1) and ($vittoriaChiamante[$i]=="yes"))
+					{
+					if(($numeroGiocatori<=5) or (($numeroGiocatori>5) and ($morto[$i][$j]!=$giocatori[$j])))
+					{
+						$puntiGiocatore=(($puntiMano[$i]*2)/(-4));
+						if($puntiGiocatore<0)
+							echo("<td width=".$larg_cella."><font color='##FF0000'><b><center>".$puntiGiocatore."</center></b></font></td>");
+						else
+							echo("<td width=".$larg_cella."><b><center>".$puntiGiocatore."</center></b></td>");
+						$update_chiama2_punti="UPDATE chiama2 
+										SET punti='$puntiGiocatore' 
+										WHERE chiamante='N' AND socio='N' AND dataPartita='$dataPartita' AND mano='$mano' and punti=0";
+						mysql_query($update_chiama2_punti)
+							or die("1 - Impossibile inserire nel db i punti dei giocatori non chiamenti n&eacute; soci");
+						//}
+						$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiGiocatore;
+					}
+					else
+					{
+						$puntiGiocatore=0;
+						echo("<td width=".$larg_cella."><b><center>".$puntiGiocatore."</center></b></td>");
+					}
+					}
+				elseif((strlen($chiamante[$i][$j])!=6) and (strlen($socio[$i][$j])!=6) and ($chiamatoInMano[$i]==1) and ($vittoriaChiamante[$i]!="yes"))
+					{
+					if(($numeroGiocatori<=5) or (($numeroGiocatori>5) and ($morto[$i][$j]!=$giocatori[$j])))
+					{
+						$puntiGiocatore=(($puntiMano[$i]*2)/(4));
+						if($puntiGiocatore<0)
+							echo("<td width=".$larg_cella."><font color='##FF0000'><b><center>".$puntiGiocatore."</center></b></font></td>");
+						else
+							echo("<td width=".$larg_cella."><b><center>".$puntiGiocatore."</center></b></td>");
+						$update_chiama2_punti="UPDATE chiama2 
+										SET punti='$puntiGiocatore' 
+										WHERE chiamante='N' AND socio='N' AND dataPartita='$dataPartita' AND mano='$mano' and punti=0"; 
+						mysql_query($update_chiama2_punti)
+							or die("2 - Impossibile inserire nel db i punti dei giocatori non chiamenti n&eacute; soci");
+						$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiGiocatore;
+					}
+					else
+					{
+						$puntiGiocatore=0;
+						echo("<td width=".$larg_cella."><b><center>".$puntiGiocatore."</center></b></td>");
+					}
+					}
+				elseif((strlen($chiamante[$i][$j])!=6) and (strlen($socio[$i][$j])!=6) and ($chiamatoInMano[$i]==0) and ($vittoriaChiamante[$i]=="yes"))
+					{
+					if(($numeroGiocatori<=5) or (($numeroGiocatori>5) and ($morto[$i][$j]!=$giocatori[$j])))
+					{
+						$puntiGiocatore=((($puntiMano[$i]+($puntiMano[$i]/2))/3))*(-1);
+						if($puntiGiocatore<0)
+							echo("<td width=".$larg_cella."><font color='##FF0000'><b><center>".$puntiGiocatore."</center></b></font></td>");
+						else
+							echo("<td width=".$larg_cella."><b><center>".$puntiGiocatore."</center></b></td>");
+						$update_chiama2_punti="UPDATE chiama2 
+										SET punti='$puntiGiocatore' 
+										WHERE chiamante='N' AND socio='N' AND dataPartita='$dataPartita' AND mano='$mano' and punti=0";
+						mysql_query($update_chiama2_punti)
+							or die("3 - Impossibile inserire nel db i punti dei giocatori non chiamenti n&eacute; soci");
+						$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiGiocatore;
+					}
+					else
+					{
+						$puntiGiocatore=0;
+						echo("<td width=".$larg_cella."><b><center>".$puntiGiocatore."</center></b></td>");
+					}
+					}
+				elseif((strlen($chiamante[$i][$j])!=6) and (strlen($socio[$i][$j])!=6) and ($chiamatoInMano[$i]==0) and ($vittoriaChiamante[$i]!="yes"))
+					{
+					if(($numeroGiocatori<=5) or (($numeroGiocatori>5) and ($morto[$i][$j]!=$giocatori[$j])))
+					{
+						$puntiGiocatore=((($puntiMano[$i]+($puntiMano[$i]/2))/3));
+						if($puntiGiocatore<0)
+							echo("<td width=".$larg_cella."><font color='##FF0000'><b><center>".$puntiGiocatore."</center></b></font></td>");
+						else
+							echo("<td width=".$larg_cella."><b><center>".$puntiGiocatore."</center></b></td>");
+						$update_chiama2_punti="UPDATE chiama2 
+										SET punti='$puntiGiocatore' 
+										WHERE chiamante='N' AND socio='N' AND dataPartita='$dataPartita' AND mano='$mano' and punti=0";
+						mysql_query($update_chiama2_punti)
+							or die("4 - Impossibile inserire nel db i punti dei giocatori non chiamenti n&eacute; soci");
+						$puntiTotaliGiocatore[$j]=$puntiTotaliGiocatore[$j]+$puntiGiocatore;
+					}
+					else
+					{
+						$puntiGiocatore=0;
+						echo("<td width=".$larg_cella."><b><center>".$puntiGiocatore."</center></b></td>");
+					}
+					}
+			} // fine for($j=0; $j<$numeroGiocatori; $j++)
+			for($j=0; $j<$numeroGiocatori; $j++)
+			{
 				if($numeroGiocatori>5)
-					echo("<td width='101'><b><center>".$puntiClassificaPartita[$j]."</center></b></td>");
-				else
-					echo("<td width='102'><b><center>".$puntiClassificaPartita[$j]."</center></b></td>");
-				$query="UPDATE posizioni 
-					    SET puntiClassifica=$puntiClassificaPartita[$j] 
-					    WHERE dataPartita='$dataPartita' AND acronimoGiocatore='$giocatori[$j]'";
-				mysql_query($query)
-					or die("Impossibile compilare il campo 'puntiClassifica' della tabella posizioni");
-				$query2="UPDATE giocatori
-					      SET puntitotali=puntitotali+$puntiClassificaPartita[$j]
-					      WHERE acronimo='$giocatori[$j]'";
-				mysql_query($query2)
-					or die("Impossibile compilare il campo 'puntiTotali' della tabella giocatori: ".mysql_error());
+				{
+					for($j=0; $j<$numeroGiocatori; $j++)
+					{
+						if($morto[$i][$j]==$giocatori[$j])
+						{
+							$update_punti_morto="UPDATE chiama2
+											SET punti=0
+											WHERE chiamante='N' and socio='N' and datapartita='$dataPartita' and mano='$mano' and morto='S'";
+							mysql_query($update_punti_morto)
+								or die("Impossibile impostare a zero i punti dei giocatori che, nelle varie mani, hanno saltato il turno");
+						}
+					}
+				}
+			}
+			if($numeroGiocatori>5) // se i giocatori sono 6
+			{
+				echo("<td width='...'><center><b>".$cartaChiamata[$i]."</b></center></td>");
+				echo("<td width='...'><center><b>".$quotaVittoria[$i]."</b></center></td>");
+			}
+			else // se i giocatori sono 5
+			{
+				echo("<td width='4%'><center><b>".$cartaChiamata[$i]."</b></center></td>");
+				echo("<td width='4%'><center><b>".$quotaVittoria[$i]."</b></center></td>");
+			}
+			
+			if($cuori[$i]=="yes")
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					echo("<td width='...'><center><input checked type='checkbox' name='$cuori[$i]' value='$cuori[$i]'></center></td>");
+				else // se i giocatori sono 5
+					echo("<td width='4%'><center><input checked type='checkbox' name='$cuori[$i]' value='$cuori[$i]'></center></td>");
+			else
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					echo("<td width='...'><center><input type='checkbox' name='$cuori[$i]' value='$cuori[$i]'></center></td>");
+				else // se i giocatori sono 5
+					echo("<td width='4%'><center><input type='checkbox' name='$cuori[$i]' value='$cuori[$i]'></center></td>");
+			if($quadri[$i]=="yes")
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					echo("<td width='...'><center><input checked type='checkbox' name='$quadri[$i]' value='$quadri[$i]'></center></td>");
+				else // se i giocatori sono 5
+					echo("<td width='4%'><center><input checked type='checkbox' name='$quadri[$i]' value='$quadri[$i]'></center></td>");
+			else
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					echo("<td width='...'><center><input type='checkbox' name='$quadri[$i]' value='$quadri[$i]'></center></td>");
+				else // se i giocatori sono 5
+					echo("<td width='4%'><center><input type='checkbox' name='$quadri[$i]' value='$quadri[$i]'></center></td>");
+			if($fiori[$i]=="yes")
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					echo("<td width='...'><center><input checked type='checkbox' name='$fiori[$i]' value='$fiori[$i]'></center></td>");
+				else // se i giocatori sono 5
+					echo("<td width='4%'><center><input checked type='checkbox' name='$fiori[$i]' value='$fiori[$i]'></center></td>");
+			else
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					echo("<td width='...'><center><input type='checkbox' name='$fiori[$i]' value='$fiori[$i]'></center></td>");
+				else // se i giocatori sono 5
+					echo("<td width='4%'><center><input type='checkbox' name='$fiori[$i]' value='$fiori[$i]'></center></td>");
+			if($picche[$i]=="yes")
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					echo("<td width='...'><center><input checked type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
+				else // se i giocatori sono 5
+					echo("<td width='4%'><center><input checked type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
+			else
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					echo("<td width='...'><center><input type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
+				else // se i giocatori sono 5
+				echo("<td width='4%'><center><input type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
+			if($cappotto[$i]=="yes")
+			{
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					echo("<td width='...'><center><input checked type='checkbox' name='$cappotto[$i]' value='$cappotto[$i]'></center></td>");
+				else // se i giocatori sono 5
+					echo("<td width='8%'><center><input checked type='checkbox' name='$cappotto[$i]' value='$cappotto[$i]'></center></td>");
+				$update_cappotto="UPDATE partita
+								SET cappotto='S'
+								WHERE datapartita='$dataPartita' and mano='$mano'";
+				mysql_query($update_cappotto)
+					or die("Impossibile impostare ad S il valore del campo cappotto".mysql_error());
+			}
+			else
+			{
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					echo("<td width='...'><center><input type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
+				else // se i giocatori sono 5
+					echo("<td width='8%'><center><input type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
+				$update_cappotto="UPDATE partita
+								SET cappotto='N'
+								WHERE datapartita='$dataPartita' and mano='$mano'";
+				mysql_query($update_cappotto)
+					or die("Impossibile impostare ad N il valore del campo cappotto".mysql_error());
 			}
 			echo("</tr>");
-		echo("</table>");
+		} // fine for($i=0; $i<$numeroMani; $i++)
+		echo("<tr>");
+			if($numeroGiocatori>5) // se i giocatori sono 6
+				echo("<td width='...'><b><center>Totale punti</center></b></td>");
+			else // se i giocatori sono 5
+				echo("<td width='8%'><b><center>Totale punti</center></b></td>");
+			for($j=0; $j<$numeroGiocatori; $j++)
+			{
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					{
+					echo("<td width='...'><b><center>".$quanteVolteChiamante[$j]."</center></b></td>");
+					echo("<td width='...'><b><center>".$quanteVolteSocio[$j]."</center></b></td>");
+					echo("<td width='...'><b><center>".$quanteVolteMorto[$j]."</center></b></td>");
+					if($puntiTotaliGiocatore[$j]<0)
+						echo("<td width='...'><font color='##FF0000'><b><center>".$puntiTotaliGiocatore[$j]."</center></b></font></td>");
+					else
+						echo("<td width='...'><b><center>".$puntiTotaliGiocatore[$j]."</center></b></td>");
+					}
+				else // se i giocatori sono 5
+					{
+					echo("<td width='4%'><b><center>".$quanteVolteChiamante[$j]."</center></b></td>");
+					echo("<td width='4%'><b><center>".$quanteVolteSocio[$j]."</center></b></td>");
+					if($puntiTotaliGiocatore[$j]<0)
+						echo("<td width='4%'><font color='##FF0000'><b><center>".$puntiTotaliGiocatore[$j]."</center></b></font></td>");
+					else
+						echo("<td width='4%'><b><center>".$puntiTotaliGiocatore[$j]."</center></b></td>");
+					}
+				$query="UPDATE totPuntiPartita 
+						SET totPunti=$puntiTotaliGiocatore[$j]
+						WHERE dataPartita='$dataPartita' AND acronimoGiocatore='$giocatori[$j]'";
+				mysql_query($query)
+					or die("Impossibile compilare il campo 'totPunti' della tabella totPuntiPartita");
+			}
+			echo("<td colspan=7 rowspan=3>&nbsp;</td>");
+		echo("</tr>");
+		
+		//algoritmo per mandare a video i valori delle posizioni
+		echo("<tr>");
+			if($numeroGiocatori>5) // se i giocatori sono 6
+				echo("<td width='...'><b><center>POSIZIONE</center></b></td>");
+			else // se i giocatori sono 5
+				echo("<td width='8%'><b><center>POSIZIONE</center></b></td>");
+			for($j=0; $j<$numeroGiocatori; $j++)
+			{
+				$punteggio[$j]=round($puntiTotaliGiocatore[$j]+($quanteVolteChiamante[$j]*1/10)+($quanteVolteSocio[$j]*1/100), 2);
+				$perConfronto[$j]=$punteggio[$j];
+			}
+			do
+			{
+				$effettuatiScambi=0;
+				for($j=0; $j<$numeroGiocatori-1; $j++)
+				{
+					if($punteggio[$j]<$punteggio[$j+1])
+					{
+						$ausiliaria=$punteggio[$j];
+						$punteggio[$j]=$punteggio[$j+1];
+						$punteggio[$j+1]=$ausiliaria;
+						$effettuatiScambi=1;
+					}
+				}
+			}
+			while($effettuatiScambi==1); //fine while che ordina la variabile $punteggio, facendole contenere tutti i punteggi in ordine decrescente
+			$posizioneRiferimento=null;
+			$punteggioRiferimento=null;
+			for($j=0;$j<$numeroGiocatori;$j++)
+			{
+				$posizione=$j+1; // è il valore che va a video
+				$trovato=0;
+				$i=0;
+				do
+				{
+					// la variabile $punteggio contiene i punteggi in ordine decrescente, mentre $perConfronto contiene i punteggi nell'orgine originale
+					if(($punteggio[$j]==$perConfronto[$i]) and ($punteggio[$j]!=$punteggioRiferimento))
+					{	
+						$trovato=1;
+						$punteggioRiferimento=$punteggio[$j];
+						$posizioneRiferimento=$posizione;
+						$rango[$i]=$posizioneRiferimento;
+						$perConfronto[$i]=null;
+					}
+					elseif(($punteggio[$j]==$perConfronto[$i]) and ($punteggio[$j]==$punteggioRiferimento))
+					{
+						$trovato=1;
+						$rango[$i]=$posizioneRiferimento;
+						$perConfronto[$i]=null;
+					}
+					$i++;
+				}
+				while($trovato==0);
+			}
+			for($j=0; $j<$numeroGiocatori; $j++)
+			{
+				if($numeroGiocatori>5) // se i giocatori sono 6
+					echo("<td width='...'><b><center>".$rango[$j]."</center></b></td>");
+				else // se i giocatori sono 5
+					echo("<td colspan=3><b><center>".$rango[$j]."</center></b></td>");
+				$query="UPDATE posizioni 
+						SET posizione='$rango[$j]' 
+						WHERE dataPartita='$dataPartita' AND acronimoGiocatore='$giocatori[$j]'";
+				mysql_query($query)
+					or die("Impossibile compilare il campo 'posizione' della tabella posizioni");
+			}
+			//echo("<td colspan=7>&nbsp;</td>");
+		echo("</tr>");
+		
+		//algoritmo per mandare a video i punti classifica
+		echo("<tr>");
+			if($numeroGiocatori>5) // se i giocatori sono 6
+				echo("<td width='...'><b><center>Pti Classifica</center></b></td>");
+			else // se i giocatori sono 5
+				echo("<td width='8%'><b><center>Pti Classifica</center></b></td>");
+		for($j=0; $j<$numeroGiocatori; $j++)
+		{
+			if($rango[$j]==1)
+				$puntiClassificaPartita[$j]=((0.1*$puntiTotaliGiocatore[$j])+14);
+			elseif($rango[$j]==2)
+				$puntiClassificaPartita[$j]=((0.1*$puntiTotaliGiocatore[$j])+10);
+			elseif($rango[$j]==3)
+				$puntiClassificaPartita[$j]=((0.1*$puntiTotaliGiocatore[$j])+7);
+			elseif($rango[$j]==4)
+				$puntiClassificaPartita[$j]=((0.1*$puntiTotaliGiocatore[$j])+4);
+			else
+				$puntiClassificaPartita[$j]=((0.1*$puntiTotaliGiocatore[$j])+1);
+
+			if($numeroGiocatori>5)  // se i giocatori sono 6
+				echo("<td colspan=...><b><center>".$puntiClassificaPartita[$j]."</center></b></td>");
+			else // se i giocatori sono 5
+				echo("<td colspan=3><b><center>".$puntiClassificaPartita[$j]."</center></b></td>");
+			$query="UPDATE posizioni 
+					SET puntiClassifica=$puntiClassificaPartita[$j] 
+					WHERE dataPartita='$dataPartita' AND acronimoGiocatore='$giocatori[$j]'";
+			mysql_query($query)
+				or die("Impossibile compilare il campo 'puntiClassifica' della tabella posizioni");
+			$query2="UPDATE giocatori
+						SET puntitotali=puntitotali+$puntiClassificaPartita[$j]
+						WHERE acronimo='$giocatori[$j]'";
+			mysql_query($query2)
+				or die("Impossibile compilare il campo 'puntiTotali' della tabella giocatori: ".mysql_error());
+		}
+			//echo("<td colspan=7>&nbsp;</td>");
+		echo("</tr>");
+	echo("</table>");
 	?>
 	<br>
 	<h3>Partita registrata correttamente</h3>

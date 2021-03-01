@@ -1,11 +1,6 @@
 <html>
 	<head>
 		<title>Partita</title>
-		<style>
-			table, tr, td {
-				overflow: scroll;
-			}
-		</style>
 	</head>
 	<body>
 		<?php
