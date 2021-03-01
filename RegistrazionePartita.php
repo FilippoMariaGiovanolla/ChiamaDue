@@ -120,13 +120,13 @@
 				if($numeroGiocatori>5) // se i giocatori sono 6
 				{
 					echo("<td width='...'><b><center>Data partita</center></b></td>");
-					echo("<td colspan=...><font size=5><center><strong>".$dataOdierna."</strong></center></font></td>");
+					echo("<td colspan=...><font size=5><center><strong>".$dataPartita."</strong></center></font></td>");
 					echo("<td width='...' rowspan=3><b><div align='center'>Cappotto</div></b></td>");
 				}
 				else // se i giocatori sono 5
 				{
 					echo("<td width='8%'><b><center>Data partita</center></b></td>");
-					echo("<td colspan=21><h2><center>".$dataOdierna."</center></h2></td>");
+					echo("<td colspan=21><font size=5><center><strong>".$dataPartita."</strong></center></font></td>");
 					echo("<td width='8%' rowspan=3><b><div align='center'>Cappotto</div></b></td>");
 					
 				}					
