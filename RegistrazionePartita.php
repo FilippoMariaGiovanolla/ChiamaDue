@@ -119,9 +119,9 @@
 			<?php
 				if($numeroGiocatori>5) // se i giocatori sono 6
 				{
-					echo("<td width='...'><b><center>Data partita</center></b></td>");
-					echo("<td colspan=...><font size=5><center><strong>".$dataPartita."</strong></center></font></td>");
-					echo("<td width='...' rowspan=3><b><div align='center'>Cappotto</div></b></td>");
+					echo("<td width='8%'><b><center>Data partita</center></b></td>");
+					echo("<td colspan=30><font size=5><center><strong>".$dataPartita."</strong></center></font></td>");
+					echo("<td width='8%' rowspan=3><b><div align='center'>Cappotto</div></b></td>");
 				}
 				else // se i giocatori sono 5
 				{
@@ -135,40 +135,38 @@
 		<tr>
 			<?php
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td width='...'><b><center>Acronimo</center></b></td>");
+					echo("<td width='8%'><b><center>Acronimo</center></b></td>");
 				else  // se i giocatori sono 5
 					echo("<td width='8%'><b><center>Acronimo</center></b></td>");
 
 				for($i=0; $i<$numeroGiocatori; $i++)
 					if($numeroGiocatori>5) // se i giocatori sono 6
-						echo("<td colspan=...><b><center>".$giocatori[$i]."</center></b></td>");
+						echo("<td colspan=4><b><center>".$giocatori[$i]."</center></b></td>");
 					else // se i giocatori sono 5
 						echo("<td colspan=3'><b><center>".$giocatori[$i]."</center></b></td>");
 
 				if($numeroGiocatori>5) // se i giocatori sono 6
-				echo("<td colspan=...><b><center>Carta</center></b></td>
-				      <td colspan=...><center><b>Seme</b><center></td>
-				      <!--<td width='...'>&nbsp;</td>-->");
+				echo("<td colspan=2><b><center>Carta</center></b></td>
+				      <td colspan=4><center><b>Seme</b><center></td>");
 				else  // se i giocatori sono 5
 				echo("<td colspan=2><b><center>Carta</center></b></td>
-				      <td colspan=4><center><b>Seme</b><center></td>
-				      <!--<td width='8%'>&nbsp;</td>-->");
+				      <td colspan=4><center><b>Seme</b><center></td>");
 			?>
 		</tr>
 		<tr>
 			<?php
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td width='...'><b><center>Chiam/Socio</center></b></td>");
+					echo("<td width='8%'><b><center>Chiam/Socio</center></b></td>");
 				else // se i giocatori sono 5
 					echo("<td width='8%'><b><center>Chiam/Socio</center></b></td>"); 
 			
 				for($i=0; $i<$numeroGiocatori; $i++)
 				{
 					if($numeroGiocatori>5) // se i giocatori sono 6
-						echo("<td width='20'><b><center>C</center></b></td>
-							  <td width='20'><b><center>S</center></b></td>
-							  <td width='20'><b><center>M</center></b></td>
-							  <td width='23'><b><center>Pti</center></b></td>");
+						echo("<td width='3.5%'><b><center>C</center></b></td>
+							  <td width='3.5%'><b><center>S</center></b></td>
+							  <td width='3.5%'><b><center>M</center></b></td>
+							  <td width='3.5%'><b><center>Pti</center></b></td>");
 					else // se i giocatori sono 5
 						echo("<td width='4%'><b><center>C</center></b></td>
 							<td width='4%'><b><center>S</center></b></td>
@@ -176,19 +174,17 @@
 				}
 
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td colspan=...>&nbsp;</td>
-					<td width='...'><center><b>C</b></center></td>
-					<td width='...'><center><b>Q</b></center></td>
-					<td width='...'><center><b>F</b></center></td>
-					<td width='...'><center><b>P</b></center></td>
-					<!--<td width='...'>&nbsp;</td>-->");
+					echo("<td colspan=2>&nbsp;</td>
+					<td width='3.5%'><center><b>C</b></center></td>
+					<td width='3.5%'><center><b>Q</b></center></td>
+					<td width='3.5%'><center><b>F</b></center></td>
+					<td width='3.5%'><center><b>P</b></center></td>");
 				else // se i giocatori sono 5
 					echo("<td colspan=2>&nbsp;</td>
 					<td width='4%'><center><b>C</b></center></td>
 					<td width='4%'><center><b>Q</b></center></td>
 					<td width='4%'><center><b>F</b></center></td>
-					<td width='4%'><center><b>P</b></center></td>
-					<!--<td width='8%'>&nbsp;</td>-->");
+					<td width='4%'><center><b>P</b></center></td>");
 			?>
 		</tr>
 	<?php
@@ -208,7 +204,7 @@
 			$larghezza=100;
 			echo("<tr>");
 			if($numeroGiocatori>5) // se i giocatori sono 6
-				echo("<td width='...'><b><center>Mano n. ".$mano."</center></b></td>");
+				echo("<td width='8%'><b><center>Mano n. ".$mano."</center></b></td>");
 			else // se i giocatori sono 5
 			echo("<td width='8%'><b><center>Mano n. ".$mano."</center></b></td>");
 			for($j=0; $j<$numeroGiocatori; $j++)
@@ -216,7 +212,7 @@
 				//mando a video i checkbox "chiamante"
 				if(($numeroGiocatori>5) and (strlen($chiamante[$i][$j])==6))
 					{
-					echo("<td width='...'><center><input checked type='checkbox' name='$chiamante' value='$giocatori[$j]'></center></td>");
+					echo("<td width='3.5%'><center><input checked type='checkbox' name='$chiamante' value='$giocatori[$j]'></center></td>");
 					$quanteVolteChiamante[$j]++;
 					$update_chiama2_chiamante="UPDATE chiama2 
 											SET chiamante='S' 
@@ -225,7 +221,7 @@
 						or die("Impossibile inserire nel db i chiamanti di questa partita");
 					}
 				elseif(($numeroGiocatori>5) and ($chiamante[$i][$j]!=6))
-					echo("<td width='...'><center><input type='checkbox' name='$chiamante' value='$giocatori[$j]'></center></td>");
+					echo("<td width='3.5%'><center><input type='checkbox' name='$chiamante' value='$giocatori[$j]'></center></td>");
 				elseif(strlen($chiamante[$i][$j])==6)
 					{
 					echo("<td width='4%'><center><input checked type='checkbox' name='$chiamante' value='$giocatore[$j]'></center></td>");
@@ -242,7 +238,7 @@
 				//mando a video i checkbox "socio"
 				if(($numeroGiocatori>5) and (strlen($socio[$i][$j])==6))
 					{
-					echo("<td width='...'><center><input checked type='checkbox' name='$socio' value='$giocatori[$j]'></center></td>");
+					echo("<td width='3.5%'><center><input checked type='checkbox' name='$socio' value='$giocatori[$j]'></center></td>");
 					$quanteVolteSocio[$j]++;
 					$update_chiama2_socio="UPDATE chiama2 
 										SET socio='S' 
@@ -251,7 +247,7 @@
 						or die("Impossibile inserire nel db i soci di questa partita");
 					}
 				elseif($numeroGiocatori>5)
-					echo("<td width='...'><center><input type='checkbox' name='$socio' value='$giocatori[$j]'></center></td>");
+					echo("<td width='3.5%'><center><input type='checkbox' name='$socio' value='$giocatori[$j]'></center></td>");
 				elseif(strlen($socio[$i][$j])==6)
 					{
 					echo("<td width='4%'><center><input checked type='checkbox' name='$socio' value='$giocatore[$j]'></center></td>");
@@ -268,7 +264,7 @@
 				//mando a video i checkbox "morto"
 				if(($numeroGiocatori>5) and (strlen($morto[$i][$j])==6))
 					{
-					echo("<td width='...'><center><input checked type='checkbox' name='$morto' value='$giocatori[$j]'></center></td>");
+					echo("<td width='3.5%'><center><input checked type='checkbox' name='$morto' value='$giocatori[$j]'></center></td>");
 					$quanteVolteMorto[$j]++;
 					$update_chiama2_morto="UPDATE chiama2 
 										SET morto='S' 
@@ -277,11 +273,11 @@
 						or die("Impossibile inserire nel db i morti di questa partita");
 					}
 				elseif($numeroGiocatori>5)
-					echo("<td width='...'><center><input type='checkbox' name='$morto' value='$giocatori[$j]'></center></td>");
+					echo("<td width='3.5%'><center><input type='checkbox' name='$morto' value='$giocatori[$j]'></center></td>");
 					
 				//mando a video le caselle punti
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					$larg_cella="'...'";
+					$larg_cella="'3.5%'";
 				else // se i giocatori sono 5
 					$larg_cella="'4%'";
 				if((strlen($chiamante[$i][$j])==6) and (strlen($socio[$i][$j])==6) and ($vittoriaChiamante[$i]=="yes"))
@@ -483,8 +479,8 @@
 			}
 			if($numeroGiocatori>5) // se i giocatori sono 6
 			{
-				echo("<td width='...'><center><b>".$cartaChiamata[$i]."</b></center></td>");
-				echo("<td width='...'><center><b>".$quotaVittoria[$i]."</b></center></td>");
+				echo("<td width='3.5%'><center><b>".$cartaChiamata[$i]."</b></center></td>");
+				echo("<td width='3.5%'><center><b>".$quotaVittoria[$i]."</b></center></td>");
 			}
 			else // se i giocatori sono 5
 			{
@@ -494,48 +490,48 @@
 			
 			if($cuori[$i]=="yes")
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td width='...'><center><input checked type='checkbox' name='$cuori[$i]' value='$cuori[$i]'></center></td>");
+					echo("<td width='3.5%'><center><input checked type='checkbox' name='$cuori[$i]' value='$cuori[$i]'></center></td>");
 				else // se i giocatori sono 5
 					echo("<td width='4%'><center><input checked type='checkbox' name='$cuori[$i]' value='$cuori[$i]'></center></td>");
 			else
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td width='...'><center><input type='checkbox' name='$cuori[$i]' value='$cuori[$i]'></center></td>");
+					echo("<td width='3.5%'><center><input type='checkbox' name='$cuori[$i]' value='$cuori[$i]'></center></td>");
 				else // se i giocatori sono 5
 					echo("<td width='4%'><center><input type='checkbox' name='$cuori[$i]' value='$cuori[$i]'></center></td>");
 			if($quadri[$i]=="yes")
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td width='...'><center><input checked type='checkbox' name='$quadri[$i]' value='$quadri[$i]'></center></td>");
+					echo("<td width='3.5%'><center><input checked type='checkbox' name='$quadri[$i]' value='$quadri[$i]'></center></td>");
 				else // se i giocatori sono 5
 					echo("<td width='4%'><center><input checked type='checkbox' name='$quadri[$i]' value='$quadri[$i]'></center></td>");
 			else
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td width='...'><center><input type='checkbox' name='$quadri[$i]' value='$quadri[$i]'></center></td>");
+					echo("<td width='3.5%'><center><input type='checkbox' name='$quadri[$i]' value='$quadri[$i]'></center></td>");
 				else // se i giocatori sono 5
 					echo("<td width='4%'><center><input type='checkbox' name='$quadri[$i]' value='$quadri[$i]'></center></td>");
 			if($fiori[$i]=="yes")
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td width='...'><center><input checked type='checkbox' name='$fiori[$i]' value='$fiori[$i]'></center></td>");
+					echo("<td width='3.5%'><center><input checked type='checkbox' name='$fiori[$i]' value='$fiori[$i]'></center></td>");
 				else // se i giocatori sono 5
 					echo("<td width='4%'><center><input checked type='checkbox' name='$fiori[$i]' value='$fiori[$i]'></center></td>");
 			else
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td width='...'><center><input type='checkbox' name='$fiori[$i]' value='$fiori[$i]'></center></td>");
+					echo("<td width='3.5%'><center><input type='checkbox' name='$fiori[$i]' value='$fiori[$i]'></center></td>");
 				else // se i giocatori sono 5
 					echo("<td width='4%'><center><input type='checkbox' name='$fiori[$i]' value='$fiori[$i]'></center></td>");
 			if($picche[$i]=="yes")
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td width='...'><center><input checked type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
+					echo("<td width='3.5%'><center><input checked type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
 				else // se i giocatori sono 5
 					echo("<td width='4%'><center><input checked type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
 			else
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td width='...'><center><input type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
+					echo("<td width='3.5%'><center><input type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
 				else // se i giocatori sono 5
 				echo("<td width='4%'><center><input type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
 			if($cappotto[$i]=="yes")
 			{
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td width='...'><center><input checked type='checkbox' name='$cappotto[$i]' value='$cappotto[$i]'></center></td>");
+					echo("<td width='8%'><center><input checked type='checkbox' name='$cappotto[$i]' value='$cappotto[$i]'></center></td>");
 				else // se i giocatori sono 5
 					echo("<td width='8%'><center><input checked type='checkbox' name='$cappotto[$i]' value='$cappotto[$i]'></center></td>");
 				$update_cappotto="UPDATE partita
@@ -547,7 +543,7 @@
 			else
 			{
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td width='...'><center><input type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
+					echo("<td width='8%'><center><input type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
 				else // se i giocatori sono 5
 					echo("<td width='8%'><center><input type='checkbox' name='$picche[$i]' value='$picche[$i]'></center></td>");
 				$update_cappotto="UPDATE partita
@@ -560,20 +556,20 @@
 		} // fine for($i=0; $i<$numeroMani; $i++)
 		echo("<tr>");
 			if($numeroGiocatori>5) // se i giocatori sono 6
-				echo("<td width='...'><b><center>Totale punti</center></b></td>");
+				echo("<td width='8%'><b><center>Totale punti</center></b></td>");
 			else // se i giocatori sono 5
 				echo("<td width='8%'><b><center>Totale punti</center></b></td>");
 			for($j=0; $j<$numeroGiocatori; $j++)
 			{
 				if($numeroGiocatori>5) // se i giocatori sono 6
 					{
-					echo("<td width='...'><b><center>".$quanteVolteChiamante[$j]."</center></b></td>");
-					echo("<td width='...'><b><center>".$quanteVolteSocio[$j]."</center></b></td>");
-					echo("<td width='...'><b><center>".$quanteVolteMorto[$j]."</center></b></td>");
+					echo("<td width='3.5%'><b><center>".$quanteVolteChiamante[$j]."</center></b></td>");
+					echo("<td width='3.5%'><b><center>".$quanteVolteSocio[$j]."</center></b></td>");
+					echo("<td width='3.5%'><b><center>".$quanteVolteMorto[$j]."</center></b></td>");
 					if($puntiTotaliGiocatore[$j]<0)
-						echo("<td width='...'><font color='##FF0000'><b><center>".$puntiTotaliGiocatore[$j]."</center></b></font></td>");
+						echo("<td width='3.5%'><font color='##FF0000'><b><center>".$puntiTotaliGiocatore[$j]."</center></b></font></td>");
 					else
-						echo("<td width='...'><b><center>".$puntiTotaliGiocatore[$j]."</center></b></td>");
+						echo("<td width='3.5%'><b><center>".$puntiTotaliGiocatore[$j]."</center></b></td>");
 					}
 				else // se i giocatori sono 5
 					{
@@ -596,7 +592,7 @@
 		//algoritmo per mandare a video i valori delle posizioni
 		echo("<tr>");
 			if($numeroGiocatori>5) // se i giocatori sono 6
-				echo("<td width='...'><b><center>POSIZIONE</center></b></td>");
+				echo("<td width='8%'><b><center>POSIZIONE</center></b></td>");
 			else // se i giocatori sono 5
 				echo("<td width='8%'><b><center>POSIZIONE</center></b></td>");
 			for($j=0; $j<$numeroGiocatori; $j++)
@@ -650,7 +646,7 @@
 			for($j=0; $j<$numeroGiocatori; $j++)
 			{
 				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td width='...'><b><center>".$rango[$j]."</center></b></td>");
+					echo("<td colspan=4><b><center>".$rango[$j]."</center></b></td>");
 				else // se i giocatori sono 5
 					echo("<td colspan=3><b><center>".$rango[$j]."</center></b></td>");
 				$query="UPDATE posizioni 
@@ -665,7 +661,7 @@
 		//algoritmo per mandare a video i punti classifica
 		echo("<tr>");
 			if($numeroGiocatori>5) // se i giocatori sono 6
-				echo("<td width='...'><b><center>Pti Classifica</center></b></td>");
+				echo("<td width='8%'><b><center>Pti Classifica</center></b></td>");
 			else // se i giocatori sono 5
 				echo("<td width='8%'><b><center>Pti Classifica</center></b></td>");
 		for($j=0; $j<$numeroGiocatori; $j++)
@@ -682,7 +678,7 @@
 				$puntiClassificaPartita[$j]=((0.1*$puntiTotaliGiocatore[$j])+1);
 
 			if($numeroGiocatori>5)  // se i giocatori sono 6
-				echo("<td colspan=...><b><center>".$puntiClassificaPartita[$j]."</center></b></td>");
+				echo("<td colspan=4><b><center>".$puntiClassificaPartita[$j]."</center></b></td>");
 			else // se i giocatori sono 5
 				echo("<td colspan=3><b><center>".$puntiClassificaPartita[$j]."</center></b></td>");
 			$query="UPDATE posizioni 
@@ -702,8 +698,6 @@
 	?>
 	<br>
 	<h3>Partita registrata correttamente</h3>
-	<!--<a href="InitGiocatori.php">Inizia una nuova partita</a>
-	<br> -->
 	<a href="Chiama2index.php">Torna alla pagina iniziale</a>
 	</body>
 	<?php
