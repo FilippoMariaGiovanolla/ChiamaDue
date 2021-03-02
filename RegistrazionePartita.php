@@ -201,7 +201,6 @@
 		for($i=0; $i<$numeroMani; $i++)
 		{				
 			$mano=$i+1;
-			$larghezza=100;
 			echo("<tr>");
 			if($numeroGiocatori>5) // se i giocatori sono 6
 				echo("<td width='8%'><b><center>Mano n. ".$mano."</center></b></td>");
