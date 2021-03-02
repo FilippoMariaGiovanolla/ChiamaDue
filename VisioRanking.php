@@ -133,7 +133,7 @@
 				$giorno=substr($date_estratte[0],0,2);
 				$date[$i]=$anno."/".$mese."/".$giorno;				
 				$i++;
-				//con questo script faccio in modo che le date estratte con la select della variabile $query_date_partite vengano salvate in un array con il fomato americano, così da poterle ordinare correttamente
+				//con questo script faccio in modo che le date estratte con la select della variabile $query_date_partite vengano salvate in un array con il fomato americano, cosÃ¬ da poterle ordinare correttamente
 			}
 			$numeroPartite=count($date);
 			sort($date); // ordino le date precedentemente estratte e salvate con formato americano
@@ -145,10 +145,6 @@
 				$dataOrdinata=$giorno."/".$mese."/".$anno;
 				echo("<tr>");
 					echo("<td width='80'><center>$dataOrdinata</center></td>");
-					/*
-					select funzionante:
-					select posizioni.acronimogiocatore, punticlassifica from posizioni, medie where posizioni.acronimogiocatore=medie.acronimogiocatore and datapartita='08/06/2015' order by media desc;
-					*/
 					$query_punti="SELECT punticlassifica
 							    FROM posizioni, medie
 							    WHERE posizioni.acronimogiocatore=medie.acronimogiocatore AND datapartita='$dataOrdinata'
