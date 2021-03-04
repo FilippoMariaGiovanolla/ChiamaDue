@@ -30,7 +30,7 @@
 			echo("<br>");
 			echo("<br>");
 		?>
-		<a href="GestioneGiocatori.html">Torna alla pagina di gestione dei giocatori</a>
+		<a href="GestioneGiocatori.php">Torna alla pagina di gestione dei giocatori</a>
 		<br>
 		<?php
 			$query="select count(*) from partita";

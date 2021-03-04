@@ -69,7 +69,7 @@
 						         funzione non disponibile: <br> partita gi&agrave; effettuata in data odierna</td>");
 				?>
 				<td style="text-align: center;" width="34%"><a href="VisioStatistiche.php"><h2>Visualizza statistiche</h2></a></td>
-				<td style="text-align: center;" width="33%"><a href="GestioneGiocatori.html"><h2>Gestione giocatori</h2></a></td>
+				<td style="text-align: center;" width="33%"><a href="GestioneGiocatori.php"><h2>Gestione giocatori</h2></a></td>
 			</tr>
 		</table>
 		<?php

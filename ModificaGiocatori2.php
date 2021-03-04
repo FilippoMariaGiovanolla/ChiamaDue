@@ -57,7 +57,7 @@
 		?>
 		<BR>
 		<A HREF="ModificaGiocatori.php">Torna alla pagina di selezione del giocatore da modificare</A><BR><BR>
-		<a href="GestioneGiocatori.html">Torna alla pagina di gestione dei giocatori</a><br><br>
+		<a href="GestioneGiocatori.php">Torna alla pagina di gestione dei giocatori</a><br><br>
 		<?php
 			$query="select count(*) from partita";
 			$risultato=mysql_query($query)

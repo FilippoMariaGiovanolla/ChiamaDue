@@ -52,7 +52,7 @@
 				echo("<h3>ATTENZIONE: non sono stati inseriti giocatori!!!</h3>");
 			?>
 		<br>
-		<a href="GestioneGiocatori.html">Torna alla pagina di gestione dei giocatori</a>
+		<a href="GestioneGiocatori.php">Torna alla pagina di gestione dei giocatori</a>
 		<br>
 		<br>
 		<?php

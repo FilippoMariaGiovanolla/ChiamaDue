@@ -85,7 +85,7 @@
 		<br>
 		<a href="DisabilitaGiocatore.php">Torna alla pagina dove attivare o disattivare un'abilitazione</a>
 		<br><br>
-		<a href="GestioneGiocatori.html">Torna alla pagina di gestione dei giocatori</a>
+		<a href="GestioneGiocatori.php">Torna alla pagina di gestione dei giocatori</a>
 		<br><br>
 		<?php
 			$query="select count(*) from partita";
