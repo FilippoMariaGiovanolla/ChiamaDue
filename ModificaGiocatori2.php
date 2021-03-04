@@ -54,11 +54,21 @@
 				echo("Modifica fallita <BR>");
 				echo("".mysql_error()); // visualizza il messaggio di errore del server MySQL
 			   }
-			mysql_close($conn);
 		?>
 		<BR>
 		<A HREF="ModificaGiocatori.php">Torna alla pagina di selezione del giocatore da modificare</A><BR><BR>
 		<a href="GestioneGiocatori.html">Torna alla pagina di gestione dei giocatori</a><br><br>
-		<A HREF="Chiama2index.php">Torna alla pagina iniziale</A>
+		<?php
+			$query="select count(*) from partita";
+			$risultato=mysql_query($query)
+				or die("Impossibile contare il numero di partite gi&agrave; registrate");
+			while($riga=mysql_fetch_row($risultato))
+				$quantePartiteRegistrate=$riga[0];
+			if($quantePartiteRegistrate==0)
+				echo("<a href='Chiama2index.html'>Torna alla pagina iniziale</a>");
+			else
+				echo("<a href='Chiama2index.php'>Torna alla pagina iniziale</a>");
+			mysql_close($conn);
+		?>
 	</body>
 </html>

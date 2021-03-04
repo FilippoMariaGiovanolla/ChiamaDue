@@ -25,7 +25,6 @@
 				echo("<!-- Il valore di Sacronimo &egrave; ".$acronimo."-->");
 				if(strlen($acronimo)==6)
 				{
-					//echo("Giocatore ".$quanti.": ".$acronimo."<br>");
 					$name_progressivo="giocatore".$quanti;
 					$quanti++;
 					echo("<input name=$name_progressivo type='hidden' value='$acronimo'>");					
@@ -43,46 +42,30 @@
 			}
 			else
 			{
-				/*echo("<table border='0'>");
-					echo("<tr>");
-						echo("<td><b>Determina quante mani si potranno fare, al massimo, 
-							 in questa partita:</b> &nbsp;&nbsp;&nbsp;&nbsp;</td>");
-						echo("<td>");
-							echo("<select name='mani'>
-									<OPTION VALUE='1'>1
-									<OPTION VALUE='2'>2
-									<OPTION VALUE='3'>3
-									<OPTION VALUE='4'>4
-									<OPTION VALUE='5'>5
-									<OPTION VALUE='6'>6
-									<OPTION VALUE='7'>7
-									<OPTION VALUE='8'>8
-									<OPTION VALUE='9'>9
-									<OPTION VALUE='10'>10
-									<OPTION VALUE='11'>11
-									<OPTION VALUE='12'>12
-									<OPTION VALUE='13'>13
-									<OPTION VALUE='14'>14
-									<OPTION VALUE='15'>15
-								</select>");
-						echo("</td>");
-					echo("</tr>");
-				echo("</table>");*/
 				echo("<h3>Determina quante mani si potranno fare, al massimo, in questa partita:</b> <input type='number' name='mani' step=1></h3>");
-				//echo("<br>");
 				echo("<h3>Non so quante mani si potranno fare in questa partita <input type='checkbox' name='mani_libere' value='yes'></h3>");
 				echo("<input name='numero_giocatori' type='hidden' value='$quanti'>");
 				echo("<br><br>");
 				echo("<INPUT TYPE='SUBMIT' NAME='invio' VALUE='Avanti'>");
 				echo("</form>"); // tag di chiusura del form aperto dopo la definizione della variabile $quanti
 			}
-			mysql_close($conn);
 		?>
 		<br>
 		<br>
 		<a href="InitGiocatori.php">Torna alla pagina di selezione dei giocatori di questa partita</a>
 		<br>
 		<br>
-		<a href="Chiama2index.php">Torna alla pagina iniziale</a>
+		<?php
+			$query="select count(*) from partita";
+			$risultato=mysql_query($query)
+				or die("Impossibile contare il numero di partite gi&agrave; registrate");
+			while($riga=mysql_fetch_row($risultato))
+				$quantePartiteRegistrate=$riga[0];
+			if($quantePartiteRegistrate==0)
+				echo("<a href='Chiama2index.html'>Torna alla pagina iniziale</a>");
+			else
+				echo("<a href='Chiama2index.php'>Torna alla pagina iniziale</a>");
+			mysql_close($conn);
+		?>
 	</body>
 </html>

@@ -8,6 +8,8 @@
 		<table align="center" border="0" width="80%">
 			<tr>
 				<?php
+					if(defined('E_DEPRECATED'))
+					error_reporting(E_ALL & ~E_DEPRECATED); // questo comando evita la visualizzazione dei messaggi di funzioni deprecate
 					$hostname='localhost';
 					$username='root';
 					$conn=mysql_connect($hostname,$username,'')
@@ -50,6 +52,7 @@
 					$anno=$oggi['year'];
 					$dataOdierna=$giorno.'/'.$mese.'/'.$anno;
 					//fine fase di costruzione della data odierna
+					
 					$query="SELECT DISTINCT datapartita FROM totpuntipartita";
 					$risultato=mysql_query($query)
 						or die("impossibile estrarre le date delle partite gi&agrave; eseguite");

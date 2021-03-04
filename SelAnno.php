@@ -66,13 +66,23 @@
 				echo("<INPUT TYPE='RESET' NAME='cancellazione' VALUE='Reset'>");
 			echo("</DIV>");
 			echo("</FORM>");
-			mysql_close($conn);
 		?>
 		<br>
 		<br>
 		<a href="VisioStatistiche.php">Torna alla pagina precedente</a>
 		<br>
 		<br>
-		<a href="Chiama2index.php">Torna alla pagina iniziale</a>
+		<?php
+			$query="select count(*) from partita";
+			$risultato=mysql_query($query)
+				or die("Impossibile contare il numero di partite gi&agrave; registrate");
+			while($riga=mysql_fetch_row($risultato))
+				$quantePartiteRegistrate=$riga[0];
+			if($quantePartiteRegistrate==0)
+				echo("<a href='Chiama2index.html'>Torna alla pagina iniziale</a>");
+			else
+				echo("<a href='Chiama2index.php'>Torna alla pagina iniziale</a>");
+			mysql_close($conn);
+		?>
 	</body>
 </html>

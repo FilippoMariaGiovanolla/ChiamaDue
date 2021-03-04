@@ -29,27 +29,20 @@
 			echo("Inserimento effettuato con successo");
 			echo("<br>");
 			echo("<br>");
-			/*echo("I dati dei giocatori presenti in tabella sono:<br>");
-			$query1="SELECT *
-				      FROM giocatori";
-			$risultato1=mysql_query($query1)
-				or die("Impossibile interrogare la tabella giocatori");
-			$righe=mysql_num_rows($risultato1);
-			$colonne=mysql_num_fields($risultato1);
-			echo"<BR>";
-			echo("<TABLE BORDER='1' ALIGN='CENTER'");
-				while ($riga=mysql_fetch_row($risultato1))
-				{
-					echo("<TR>");
-					for ($j=0;$j<$colonne;$j++)
-						echo("<TD><CENTER>".$riga[$j]."</CENTER></TD>");
-					echo("</TR>");
-				}
-			echo("</TABLE>");*/
-			mysql_close($conn);
 		?>
 		<a href="GestioneGiocatori.html">Torna alla pagina di gestione dei giocatori</a>
 		<br>
-		<a href="Chiama2index.php">Torna alla pagina iniziale</a>
+		<?php
+			$query="select count(*) from partita";
+			$risultato=mysql_query($query)
+				or die("Impossibile contare il numero di partite gi&agrave; registrate");
+			while($riga=mysql_fetch_row($risultato))
+				$quantePartiteRegistrate=$riga[0];
+			if($quantePartiteRegistrate==0)
+				echo("<a href='Chiama2index.html'>Torna alla pagina iniziale</a>");
+			else
+				echo("<a href='Chiama2index.php'>Torna alla pagina iniziale</a>");
+			mysql_close($conn);
+		?>
 	</body>
 </html>

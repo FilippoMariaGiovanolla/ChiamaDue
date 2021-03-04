@@ -440,7 +440,17 @@
 	<a href="VisioStatistiche.php">Torna alla pagina di scelta della statistica da visualizzare</a>
 	<br>
 	<br>
-	<a href="Chiama2index.php">Torna alla pagina iniziale</a>
+	<?php
+		$query="select count(*) from partita";
+		$risultato=mysql_query($query)
+			or die("Impossibile contare il numero di partite gi&agrave; registrate");
+		while($riga=mysql_fetch_row($risultato))
+			$quantePartiteRegistrate=$riga[0];
+		if($quantePartiteRegistrate==0)
+			echo("<a href='Chiama2index.html'>Torna alla pagina iniziale</a>");
+		else
+			echo("<a href='Chiama2index.php'>Torna alla pagina iniziale</a>");
+	?>
 	<br>
 	<br>
 	Per tornare alle pagine immediatamente precedenti a questa, utilizzare la freccia "indietro" del browser
