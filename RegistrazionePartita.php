@@ -94,9 +94,9 @@
 				$puntiMano[$i]=6;
 			//echo("Punti mano ".$num_man.": ".$puntiMano[$i]."<br>");
 			//echo("Sto per inserire questi dati: data partita=".$dataPartita.", mano=".$num_man.", carta chiamata=".$cartaChiamata[$i].", quota vittoria=".$quotaVittoria[$i].", seme chiamato=".$seme[$i].", punti mano=".$puntiMano[$i]."<br>");
-			$query="INSERT INTO partita (dataPartita, mano, cartaChiamata, quotaVittoria, seme, puntiMano) VALUES ('$dataPartita', $num_man, '$cartaChiamata[$i]', '$quotaVittoria[$i]', '$seme[$i]', $puntiMano[$i])";
+			$query="INSERT INTO partita (dataPartita, mano, cartaChiamata, quotaVittoria, seme, puntiMano, cappotto) VALUES ('$dataPartita', $num_man, '$cartaChiamata[$i]', '$quotaVittoria[$i]', '$seme[$i]', $puntiMano[$i],'N')";
 			mysql_query($query)
-				or die("Impossibile inserire i dati nella tabella partita");
+				or die("Impossibile inserire i dati nella tabella partita: ".mysql_error());
 		}
 		for($i=0; $i<$numeroMani; $i++)
 		{
