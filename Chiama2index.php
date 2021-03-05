@@ -55,7 +55,7 @@
 					
 					$query="SELECT DISTINCT datapartita FROM totpuntipartita";
 					$risultato=mysql_query($query)
-						or die("impossibile estrarre le date delle partite gi&agrave; eseguite");
+						or die("impossibile estrarre le date delle partite gi&agrave; eseguite: ".mysql_error());
 					$trovato=0;
 					while(($dataEstratta=mysql_fetch_row($risultato)) and ($trovato==0))
 					{

@@ -55,7 +55,7 @@ create table posizioni
 	PRIMARY KEY(numRecord)
 ); --> questa tabella di fatto non serve, quindi la sua creazione la commento, così non perdo lo storico del fatto che era stata originariamente creata; cancellata con un comando: 'DROP TABLE puntiPremio' */
 
-create table totPuntiPartita
+create table totpuntipartita
 (
 	dataPartita VARCHAR(10),
 	acronimoGiocatore VARCHAR(6),
