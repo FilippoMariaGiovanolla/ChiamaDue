@@ -109,7 +109,7 @@
 				$query2="INSERT INTO posizioni VALUES ('$dataPartita','$giocatori[$j]',0,0)";
 				mysql_query($query2);
 					//or die("Impossibile inizializzare la tabella posizioni");
-				$query3="INSERT INTO totPuntiPartita VALUES ('$dataPartita','$giocatori[$j]',0)";
+				$query3="INSERT INTO totpuntipartita VALUES ('$dataPartita','$giocatori[$j]',0)";
 				mysql_query($query3);
 			}
 		}
@@ -579,11 +579,11 @@
 					else
 						echo("<td width='4%'><b><center>".$puntiTotaliGiocatore[$j]."</center></b></td>");
 					}
-				$query="UPDATE totPuntiPartita 
+				$query="UPDATE totpuntipartita 
 						SET totPunti=$puntiTotaliGiocatore[$j]
 						WHERE dataPartita='$dataPartita' AND acronimoGiocatore='$giocatori[$j]'";
 				mysql_query($query)
-					or die("Impossibile compilare il campo 'totPunti' della tabella totPuntiPartita");
+					or die("Impossibile compilare il campo 'totPunti' della tabella totpuntipartita: ".mysql_error());
 			}
 			echo("<td colspan=7 rowspan=3>&nbsp;</td>");
 		echo("</tr>");
