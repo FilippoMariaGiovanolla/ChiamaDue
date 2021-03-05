@@ -6,6 +6,12 @@
 		<center><b>Inserisci i dati dei giocatori</b></center>
 		<br>
 		<?php
+			$hostname='localhost';
+			$username='root';
+			$conn=mysql_connect($hostname,$username,'')
+				or die("Impossibile stabilire una connessione con il server");
+			$db=mysql_select_db('chiama2')
+				or die("Impossibile selezionare il database di chiamata al due");
 			$quanti=$_POST["numero"];
 			echo("<form NAME='giocatori' ACTION='InserimentoGiocatori1.php' METHOD='POST'>");				
 				for($i=0;$i<$quanti; $i++)
@@ -49,6 +55,7 @@
 				else
 					echo("<a href='Chiama2index.php'>Torna alla pagina iniziale</a>");
 			echo("</form>");
+			mysql_close($conn);
 		?>
 	</body>
 </html>

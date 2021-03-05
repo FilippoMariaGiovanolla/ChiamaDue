@@ -9,7 +9,7 @@
 			$conn=mysql_connect($hostname,$username,'')
 				or die("Impossibile stabilire una connessione con il server");
 			$db=mysql_select_db('chiama2')
-				or die("Impossibile selezionare il database del grest");
+				or die("Impossibile selezionare il database di chiamata al due");
 			$query="SELECT * 
 				    FROM giocatori
 				    limit 1";
