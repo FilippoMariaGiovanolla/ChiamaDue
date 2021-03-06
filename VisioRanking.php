@@ -39,10 +39,10 @@
 		}
 		
 		//mando a video i valori cumulativi di ogni giocatore
-		echo("<table border=1>");
+		echo("<table border=1 align='center'>");
 			echo("<tr>");
 				//mando a video l'acronimo dei giocatori
-				echo("<td width='80'><center>Giocatori</center></td>");
+				echo("<td width='80'><center><strong>Giocatori</strong></center></td>");
 				$query_acronimi="SELECT acronimogiocatore FROM medie ORDER BY media DESC";
 				$risultato_acronimi=mysql_query($query_acronimi)
 					or die("Impossibile estrarre gli acromini dei giocatori");
@@ -115,7 +115,7 @@
 		echo("</table>");
 		echo("<br>");
 		echo("<center><h3>Punti di ogni giocatore divisi per partita</h3></center>");
-		echo("<table border=1>");
+		echo("<table border=1 align='center'>");
 			echo("<tr>");
 				echo("<td width='80'><center><b>Data partita</b></center></td>");
 				$risultato_acronimi=mysql_query($query_acronimi);
