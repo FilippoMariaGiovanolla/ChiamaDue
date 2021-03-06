@@ -588,81 +588,119 @@
 			echo("<td colspan=7 rowspan=3>&nbsp;</td>");
 		echo("</tr>");
 		
+
+
+
 		//algoritmo per mandare a video i valori delle posizioni
 		echo("<tr>");
 			if($numeroGiocatori>5) // se i giocatori sono 6
 				echo("<td width='8%'><b><center>POSIZIONE</center></b></td>");
 			else // se i giocatori sono 5
 				echo("<td width='8%'><b><center>POSIZIONE</center></b></td>");
+			
+			// creo un array bidimensionale dove inserire, nella prima colonna, i punteggi che poi andrò ad ordinare in ordine decrescente e, nella seconda colonna, inizializzo il primo elemento ad 1, perché poi la prima colonna conterrà il primo classificato della mano (la seconda colonna della matrice contiene la classifica finale della partita)
+			//echo("Punteggi ordinati per giocatore:<br>");
 			for($j=0; $j<$numeroGiocatori; $j++)
 			{
-				$punteggio[$j]=round($puntiTotaliGiocatore[$j]+($quanteVolteChiamante[$j]*1/10)+($quanteVolteSocio[$j]*1/100), 2);
-				$perConfronto[$j]=$punteggio[$j];
+				$punteggio[$j][0]=round($puntiTotaliGiocatore[$j]+($quanteVolteChiamante[$j]*1/10)+($quanteVolteSocio[$j]*1/100), 2);
+				$perConfronto[$j]=$punteggio[$j][0];
+				if($j==0) // se siamo nella prima riga dell'array bidimensionale
+					$punteggio[$j][1]=1;
+				else // se non siamo nella prima riga dell'array bidimensionale
+					$punteggio[$j][1]=0;
+				//echo($punteggio[$j][0]."<br>");
 			}
 			do
 			{
 				$effettuatiScambi=0;
 				for($j=0; $j<$numeroGiocatori-1; $j++)
 				{
-					if($punteggio[$j]<$punteggio[$j+1])
+					if($punteggio[$j][0]<$punteggio[$j+1][0])
 					{
-						$ausiliaria=$punteggio[$j];
-						$punteggio[$j]=$punteggio[$j+1];
-						$punteggio[$j+1]=$ausiliaria;
+						$ausiliaria=$punteggio[$j][0];
+						$punteggio[$j][0]=$punteggio[$j+1][0];
+						$punteggio[$j+1][0]=$ausiliaria;
 						$effettuatiScambi=1;
 					}
 				}
 			}
 			while($effettuatiScambi==1); //fine while che ordina la variabile $punteggio, facendole contenere tutti i punteggi in ordine decrescente
-			$posizioneRiferimento=null;
-			$punteggioRiferimento=null;
-			for($j=0;$j<$numeroGiocatori;$j++)
-			{
-				$posizione=$j+1; // è il valore che va a video
-				$trovato=0;
-				$i=0;
-				do
-				{
-					// la variabile $punteggio contiene i punteggi in ordine decrescente, mentre $perConfronto contiene i punteggi nell'orgine originale
-					if(($punteggio[$j]==$perConfronto[$i]) and ($punteggio[$j]!=$punteggioRiferimento))
-					{	
-						$trovato=1;
-						$punteggioRiferimento=$punteggio[$j];
-						$posizioneRiferimento=$posizione;
-						$rango[$i]=$posizioneRiferimento;
-						$perConfronto[$i]=null;
-					}
-					elseif(($punteggio[$j]==$perConfronto[$i]) and ($punteggio[$j]==$punteggioRiferimento))
-					{
-						$trovato=1;
-						$rango[$i]=$posizioneRiferimento;
-						$perConfronto[$i]=null;
-					}
-					$i++;
-				}
-				while($trovato==0);
-			}
+
+			// la variabile $punteggio contiene i punteggi in ordine decrescente, mentre $perConfronto contiene i punteggi nell'orgine originale
+			/*echo("<br>Punteggi ordinati in ordine decrescrescente affiancati dalla seconda colonna della matrice:<br>");
 			for($j=0; $j<$numeroGiocatori; $j++)
 			{
-				if($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td colspan=4><b><center>".$rango[$j]."</center></b></td>");
-				else // se i giocatori sono 5
-					echo("<td colspan=3><b><center>".$rango[$j]."</center></b></td>");
-				$query="UPDATE posizioni 
-						SET posizione='$rango[$j]' 
-						WHERE dataPartita='$dataPartita' AND acronimoGiocatore='$giocatori[$j]'";
-				mysql_query($query)
-					or die("Impossibile compilare il campo 'posizione' della tabella posizioni");
+				echo($punteggio[$j][0]." - ".$punteggio[$j][1]."<br>");
 			}
-			//echo("<td colspan=7>&nbsp;</td>");
+			echo("<br>Punteggi nell'ordine originali memorizzati nella variabile PerConfronto<br>");
+			for($j=0; $j<$numeroGiocatori; $j++)
+			{
+				echo($perConfronto[$j]."<br>");
+			}*/
+
+			$rif=1; //inizializzo la posizione di riferimento per la stesura della classifica finale della partita
+
+			//per ogni elemento della matrice, controllo se i punti dell'elemento corrente sono uguali a quelli dell'elemento precedente: se i punti sono uguali, nella seconda colonna della matrice inserisco la posizione in classifica del giocatore in questione impostandola uguale all'attuale valore di riferimento ($rif), mentre se sono diversi la imposto al numero di posizione occupato dal giocatore nella matrice: se è in seconda posizione il numero sarà 2, se è in quarta sarà 4 e così via
+			for($j=1;$j<$numeroGiocatori;$j++)
+			{
+				if($punteggio[$j][0]==$punteggio[$j-1][0])
+					$punteggio[$j][1]=$rif;
+				else
+					{
+						$punteggio[$j][1]=$j+1;
+						$rif=$j+1;
+					}
+			}
+			/*
+			echo("<br>Punteggi ordinati in ordine decrescrescente affiancati dalla seconda colonna della matrice:<br>");
+			for($j=0; $j<$numeroGiocatori; $j++)
+			{
+				echo($punteggio[$j][0]." - ".$punteggio[$j][1]."<br>");
+			}*/
+
+			// ora che ho costruito un array bidimensionale dove ad ogni punteggio (prima colonna) corrisponde la posizione in classifica (seconda colonna), faccio un confronto con i punteggi nell'ordine originale presenti nell'array $perConfronto[]: quando ad ogni punteggio dell'array $perConfronto[], mando a video la corrispettiva posizione in classifica presa dall'array bidimensionale $punteggio[][]
+			for($j=0;$j<$numeroGiocatori;$j++)
+			{
+				$trovato=0;
+				$k=0;
+				do
+				{
+					if($perConfronto[$j]==$punteggio[$k][0])
+					{
+						if($numeroGiocatori>5) // se i giocatori sono 6
+						{
+							echo("<td colspan=4><b><center>".$punteggio[$k][1]."</center></b></td>");
+							$rango[$j]=$punteggio[$k][1];
+						}
+						else // se i giocatori sono 5
+						{
+							$rango[$j]=$punteggio[$k][1];
+							echo("<td colspan=3><b><center>".$punteggio[$k][1]."</center></b></td>");
+						}
+						$trovato=1;
+						$query="UPDATE posizioni 
+						        SET posizione='$rango[$j]' 
+						        WHERE dataPartita='$dataPartita' AND acronimoGiocatore='$giocatori[$j]'";
+						$risultato=mysql_query($query)
+							or die("Impossibile compilare il campo 'posizione' della tabella posizioni: ".mysql_error());
+					}
+					$k++;
+				}
+				while(($trovato==0) and ($k<$numeroGiocatori));
+			}
 		echo("</tr>");
-		
+
+
+
 		//algoritmo per mandare a video i punti classifica
 		echo("<tr>");
 			if($numeroGiocatori>5) // se i giocatori sono 6
 				echo("<td width='8%'><b><center>Pti Classifica</center></b></td>");
 			else // se i giocatori sono 5
 				echo("<td width='8%'><b><center>Pti Classifica</center></b></td>");
+		/*echo("Elenco posizioni in ordine di giocatore:<br>");
+		for($j=0; $j<$numeroGiocatori; $j++)
+			echo($rango[$j]."<br>");*/
 		for($j=0; $j<$numeroGiocatori; $j++)
 		{
 			if($rango[$j]==1)
