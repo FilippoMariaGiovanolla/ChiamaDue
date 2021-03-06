@@ -35,9 +35,9 @@
 		<tr>
 			<?php
 				if ($numeroGiocatori>5) // se i giocatori sono 6
-					echo("<td width='3.5%'><b><center>Nome</center></b></td>");
+					echo("<td width='3.5%'><b><center>Acronimo</center></b></td>");
 				else // se i giocatori sono 5
-					echo("<td width='8%'><b><center>Nome</center></b></td>");
+					echo("<td width='8%'><b><center>Acronimo</center></b></td>");
 				$query="SELECT acronimogiocatore FROM posizioni WHERE datapartita='$partita'";
 				$risultato=mysql_query($query)
 					or die("Impossibile estrarre gli acronimi dei giocatori che hanno giocato questa partita".mysql_error());
